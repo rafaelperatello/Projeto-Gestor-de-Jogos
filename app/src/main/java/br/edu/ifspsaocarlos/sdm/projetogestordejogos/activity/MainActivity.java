@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btDiceOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(MainActivity.this, "Dice", Toast.LENGTH_LONG).show();
+//            Toast.makeText(MainActivity.this, "Dice", Toast.LENGTH_LONG).show();
             Intent intentDice = new Intent(MainActivity.this, DiceActivity.class);
             startActivity(intentDice);
         }
