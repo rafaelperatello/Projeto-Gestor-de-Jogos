@@ -1,5 +1,6 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
@@ -40,16 +41,18 @@ public class MainActivity extends AppCompatActivity {
         Drawable ic_chronometer = getResources().getDrawable( R.drawable.chronometer);
 
         ColorFilter filter = new LightingColorFilter( Color.WHITE, Color.WHITE);
-//        ic_dice.setColorFilter(filter);
-//        ic_roulette.setColorFilter(filter);
-//        ic_chess.setColorFilter(filter);
-//        ic_chronometer.setColorFilter(filter);
+        ic_dice.setColorFilter(filter);
+        ic_roulette.setColorFilter(filter);
+        ic_chess.setColorFilter(filter);
+        ic_chronometer.setColorFilter(filter);
     }
 
     private View.OnClickListener btDiceOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Toast.makeText(MainActivity.this, "Dice", Toast.LENGTH_LONG).show();
+            Intent intentDice = new Intent(MainActivity.this, DiceActivity.class);
+            startActivity(intentDice);
         }
     };
 
