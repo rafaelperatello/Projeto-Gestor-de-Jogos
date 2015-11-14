@@ -1,5 +1,9 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
+import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,14 +24,33 @@ public class DiceActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-
         inflater.inflate(R.menu.dice_activity_bar, menu);
+
+        setMenuColor(menu.findItem(R.id.action_play).getIcon());
+        setMenuColor(menu.findItem(R.id.action_add).getIcon());
+        setMenuColor(menu.findItem(R.id.action_remove).getIcon());
+
+//        ActionBar ab = getActionBar();
+//        ab.setHomeButtonEnabled(true);
+//        ab.setDisplayHomeAsUpEnabled(true);
+//        ab.show();
+
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void setMenuColor(Drawable d){
+        if (d != null) {
+            d.mutate();
+            d.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                return true;
 
             case R.id.action_play:
                 Toast.makeText(this, "Start", Toast.LENGTH_SHORT).show();
