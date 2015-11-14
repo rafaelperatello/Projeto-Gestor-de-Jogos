@@ -55,7 +55,7 @@
         </activity>
         <activity
             android:name=".ChronometerActivity"
-            android:label="@string/title_activity_chronometer"
+            android:label="@string/chronometer_activity_name"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data

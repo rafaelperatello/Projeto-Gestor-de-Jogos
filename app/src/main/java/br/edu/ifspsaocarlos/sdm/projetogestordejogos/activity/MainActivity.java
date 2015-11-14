@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import br.edu.ifspsaocarlos.sdm.projetogestordejogos.ChronometerActivity;
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -75,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btChronometerOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(MainActivity.this, "Chronometer", Toast.LENGTH_LONG).show();
+            Intent intentChronometer = new Intent(MainActivity.this, ChronometerActivity.class);
+            startActivity(intentChronometer);
         }
     };
 }

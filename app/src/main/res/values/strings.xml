@@ -4,10 +4,12 @@
     <string name="dice_activity_name">Dados</string>
     <string name="roulette_activity_name">Roleta</string>
     <string name="chess_activity_name">Xadrez</string>
+    <string name="chronometer_activity_name">Cronômetro</string>
 
     <string name="action_play">Iniciar</string>
     <string name="action_add">Adicionar</string>
     <string name="action_remove">Remover</string>
-    <string name="title_activity_chronometer">ChronometerActivity</string>
+    <string name="action_settings">Configurar</string>
+
 
 </resources>
