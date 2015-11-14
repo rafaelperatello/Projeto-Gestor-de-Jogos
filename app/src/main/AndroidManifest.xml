@@ -54,7 +54,7 @@
                 android:value="br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity.MainActivity" />
         </activity>
         <activity
-            android:name=".ChronometerActivity"
+            android:name=".activity.ChronometerActivity"
             android:label="@string/chronometer_activity_name"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >

@@ -1,4 +1,4 @@
-package br.edu.ifspsaocarlos.sdm.projetogestordejogos;
+package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -13,6 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 
 public class ChronometerActivity extends AppCompatActivity {
 
