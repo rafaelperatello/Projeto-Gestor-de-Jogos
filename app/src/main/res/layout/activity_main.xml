@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:tint="@android:color/white"
             android:id="@+id/buttondice"
             android:src="@drawable/dice"/>
 
@@ -26,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:tint="@android:color/white"
             android:id="@+id/buttonroulette"
             android:src="@drawable/roulette"/>
     </LinearLayout>
@@ -42,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:tint="@android:color/white"
             android:id="@+id/buttonchess"
             android:src="@drawable/chess"/>
 
@@ -49,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:tint="@android:color/white"
             android:id="@+id/buttonchronometer"
             android:src="@drawable/chronometer"/>
     </LinearLayout>
