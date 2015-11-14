@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton bt_chess;
     private ImageButton bt_chronometer;
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ic_roulette.setColorFilter(filter);
         ic_chess.setColorFilter(filter);
         ic_chronometer.setColorFilter(filter);
+
     }
 
     private View.OnClickListener btDiceOnClickListener = new View.OnClickListener() {

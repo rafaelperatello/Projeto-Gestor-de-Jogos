@@ -4,11 +4,15 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
@@ -19,7 +23,17 @@ public class DiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -27,7 +41,6 @@ public class DiceActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dice_activity_bar, menu);
 
-        setMenuColor(menu.findItem(R.id.action_play).getIcon());
         setMenuColor(menu.findItem(R.id.action_add).getIcon());
         setMenuColor(menu.findItem(R.id.action_remove).getIcon());
 
@@ -47,10 +60,6 @@ public class DiceActivity extends AppCompatActivity {
             case android.R.id.home:
                 super.onBackPressed();
                 return true;
-
-            case R.id.action_play:
-                Toast.makeText(this, "Start", Toast.LENGTH_SHORT).show();
-                break;
 
             case R.id.action_add:
                 Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
