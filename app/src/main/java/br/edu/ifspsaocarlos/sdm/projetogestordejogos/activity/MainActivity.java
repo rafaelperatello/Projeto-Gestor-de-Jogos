@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         Drawable ic_chronometer = getResources().getDrawable( R.drawable.chronometer);
 
         ColorFilter filter = new LightingColorFilter( Color.WHITE, Color.WHITE);
-        ic_dice.setColorFilter(filter);
-        ic_roulette.setColorFilter(filter);
-        ic_chess.setColorFilter(filter);
-        ic_chronometer.setColorFilter(filter);
+//        ic_dice.setColorFilter(filter);
+//        ic_roulette.setColorFilter(filter);
+//        ic_chess.setColorFilter(filter);
+//        ic_chronometer.setColorFilter(filter);
     }
 
     private View.OnClickListener btDiceOnClickListener = new View.OnClickListener() {
