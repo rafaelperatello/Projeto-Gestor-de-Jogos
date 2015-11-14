@@ -33,7 +33,7 @@ public class ChronometerActivity extends AppCompatActivity {
     private final int STARTED = 1;
     private final int PAUSED = 2;
 
-    //Controlador de ação do conometro
+    //Controlador de ação do cronometro
     private final int START = 0;
     private final int STOP = 1;
     private final int RESTART = 2;
@@ -57,6 +57,7 @@ public class ChronometerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d(Util.DEGUB_NAME, "chronometer statuts: " + chonometerStatus);
 
+                //Lógica do status do FAB
                 switch (chonometerStatus) {
                     case STOPED:
                         chronometerControl(START);
@@ -118,11 +119,13 @@ public class ChronometerActivity extends AppCompatActivity {
         return true;
     }
 
+    //Controlador do cronometro
     private void chronometerControl(int status){
         Log.d(Util.DEGUB_NAME, "System: " + SystemClock.elapsedRealtime() + " Chronometer base: " + chronometer.getBase());
 
         switch (status){
             case START:
+                //Inicia o cronometro com a base de tempo sendo a mesma do sistema
                 baseSystemTime = SystemClock.elapsedRealtime();
                 chronometer.setBase(SystemClock.elapsedRealtime());
 
@@ -133,6 +136,7 @@ public class ChronometerActivity extends AppCompatActivity {
                 break;
 
             case STOP:
+                //Para o cronometro
                 chronometer.stop();
                 fab.setImageDrawable(ic_play);
 
@@ -140,17 +144,17 @@ public class ChronometerActivity extends AppCompatActivity {
                 break;
 
             case RESTART:
+                //Reinicia o cronometro com a base do sistema menos o tempo ja decorrido
                 int stoppedMilliseconds = 0;
 
                 String chronoText = chronometer.getText().toString();
+
                 String array[] = chronoText.split(":");
                 if (array.length == 2) {
-                    stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 1000
-                            + Integer.parseInt(array[1]) * 1000;
-                } else if (array.length == 3) {
-                    stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 60 * 1000
-                            + Integer.parseInt(array[1]) * 60 * 1000
-                            + Integer.parseInt(array[2]) * 1000;
+                    stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 1000 + Integer.parseInt(array[1]) * 1000;
+                }
+                else if (array.length == 3) {
+                    stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 60 * 1000 + Integer.parseInt(array[1]) * 60 * 1000 + Integer.parseInt(array[2]) * 1000;
                 }
 
                 chronometer.setBase(SystemClock.elapsedRealtime() - stoppedMilliseconds);
@@ -162,6 +166,7 @@ public class ChronometerActivity extends AppCompatActivity {
                 break;
 
             case RESET:
+                //Reseta o cronometro
                 chonometerStatus = STOPED;
 
                 chronometer.stop();
