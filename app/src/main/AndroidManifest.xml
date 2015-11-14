@@ -6,6 +6,9 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -44,6 +47,15 @@
         <activity
             android:name=".activity.ChessActivity"
             android:label="@string/chess_activity_name"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ChronometerActivity"
+            android:label="@string/title_activity_chronometer"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data

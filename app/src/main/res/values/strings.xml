@@ -8,5 +8,6 @@
     <string name="action_play">Iniciar</string>
     <string name="action_add">Adicionar</string>
     <string name="action_remove">Remover</string>
+    <string name="title_activity_chronometer">ChronometerActivity</string>
 
 </resources>
