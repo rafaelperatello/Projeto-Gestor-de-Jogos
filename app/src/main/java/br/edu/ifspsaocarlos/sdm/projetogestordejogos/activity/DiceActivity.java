@@ -19,6 +19,7 @@ public class DiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
@@ -29,11 +30,6 @@ public class DiceActivity extends AppCompatActivity {
         setMenuColor(menu.findItem(R.id.action_play).getIcon());
         setMenuColor(menu.findItem(R.id.action_add).getIcon());
         setMenuColor(menu.findItem(R.id.action_remove).getIcon());
-
-//        ActionBar ab = getActionBar();
-//        ab.setHomeButtonEnabled(true);
-//        ab.setDisplayHomeAsUpEnabled(true);
-//        ab.show();
 
         return super.onCreateOptionsMenu(menu);
     }
