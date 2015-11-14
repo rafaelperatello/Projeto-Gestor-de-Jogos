@@ -39,6 +39,7 @@ public class ChronometerActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.chronometer_activity_bar, menu);
 
+        setMenuColor(menu.findItem(R.id.action_reset).getIcon());
         setMenuColor(menu.findItem(R.id.action_setting).getIcon());
 
         return super.onCreateOptionsMenu(menu);
@@ -61,6 +62,11 @@ public class ChronometerActivity extends AppCompatActivity {
             case R.id.action_setting:
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 break;
+
+            case R.id.action_reset:
+                Toast.makeText(this, "Reset", Toast.LENGTH_SHORT).show();
+                break;
+
             default:
                 break;
         }

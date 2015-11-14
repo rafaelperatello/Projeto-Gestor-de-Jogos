@@ -40,7 +40,7 @@ public class ChessActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.chess_activity_bar, menu);
 
-        setMenuColor(menu.findItem(R.id.action_setting).getIcon());
+        setMenuColor(menu.findItem(R.id.action_reset).getIcon());
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -59,8 +59,8 @@ public class ChessActivity extends AppCompatActivity {
                 super.onBackPressed();
                 return true;
 
-            case R.id.action_setting:
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+            case R.id.action_reset:
+                Toast.makeText(this, "Reset", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

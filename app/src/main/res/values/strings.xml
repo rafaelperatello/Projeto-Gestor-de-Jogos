@@ -10,6 +10,7 @@
     <string name="action_add">Adicionar</string>
     <string name="action_remove">Remover</string>
     <string name="action_settings">Configurar</string>
+    <string name="action_reset">Resetar</string>
 
 
 </resources>

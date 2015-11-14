@@ -5,8 +5,10 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Slide;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -47,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
 //        ic_roulette.setColorFilter(filter);
 //        ic_chess.setColorFilter(filter);
 //        ic_chronometer.setColorFilter(filter);
+
+        setupWindowAnimations();
+    }
+
+    private void setupWindowAnimations() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Slide slide = new Slide();
+            slide.setDuration(1000);
+            getWindow().setExitTransition(slide);
+        }
     }
 
     private View.OnClickListener btDiceOnClickListener = new View.OnClickListener() {
