@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btDiceOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            Toast.makeText(MainActivity.this, "Dice", Toast.LENGTH_LONG).show();
             Intent intentDice = new Intent(MainActivity.this, DiceActivity.class);
             startActivity(intentDice);
         }
@@ -60,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btRouletteOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            Toast.makeText(MainActivity.this, "Roll", Toast.LENGTH_LONG).show();
-
             Intent intentRoulette = new Intent(MainActivity.this, RouletteActivity.class);
             startActivity(intentRoulette);
         }
@@ -70,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btChessOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(MainActivity.this, "Chess", Toast.LENGTH_LONG).show();
+            Intent intentChess = new Intent(MainActivity.this, ChessActivity.class);
+            startActivity(intentChess);
         }
     };
 
