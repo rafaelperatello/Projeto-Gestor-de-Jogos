@@ -4,32 +4,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 
 public class MainActivity extends AppCompatActivity {
-    private Button bt_dice;
-    private Button bt_roulette;
-    private Button bt_chess;
-    private Button bt_chronometer;
+    private ImageButton bt_dice;
+    private ImageButton bt_roulette;
+    private ImageButton bt_chess;
+    private ImageButton bt_chronometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bt_dice = (Button) findViewById(R.id.buttondice);
-        bt_roulette = (Button) findViewById(R.id.buttonroulette);
-        bt_chess = (Button) findViewById(R.id.buttonchess);
-        bt_chronometer = (Button) findViewById(R.id.buttonchronometer);
+        bt_dice = (ImageButton) findViewById(R.id.buttondice);
+        bt_roulette = (ImageButton) findViewById(R.id.buttonroulette);
+        bt_chess = (ImageButton) findViewById(R.id.buttonchess);
+        bt_chronometer = (ImageButton) findViewById(R.id.buttonchronometer);
 
         bt_dice.setOnClickListener(btDiceOnClickListener);
         bt_roulette.setOnClickListener(btRouletteOnClickListener);
         bt_chess.setOnClickListener(btChessOnClickListener);
         bt_chronometer.setOnClickListener(btChronometerOnClickListener);
-
-
     }
 
     private View.OnClickListener btDiceOnClickListener = new View.OnClickListener() {
