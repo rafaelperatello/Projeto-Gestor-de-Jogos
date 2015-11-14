@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Projeto Gestor de Jogos</string>
+
     <string name="main_activity_name">Gestor de Jogos</string>
     <string name="dice_activity_name">Dados</string>
     <string name="roulette_activity_name">Roleta</string>
@@ -11,6 +12,9 @@
     <string name="action_remove">Remover</string>
     <string name="action_settings">Configurar</string>
     <string name="action_reset">Resetar</string>
+
+    <string name="chess_activity_player_1">Jogador 1</string>
+    <string name="chess_activity_player_2">Jogador 2</string>
 
 
 </resources>
