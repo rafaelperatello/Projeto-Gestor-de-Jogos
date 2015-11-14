@@ -10,7 +10,7 @@ import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button bt_dice;
-    private Button bt_roll;
+    private Button bt_roulette;
     private Button bt_chess;
     private Button bt_chronometer;
 
@@ -20,12 +20,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bt_dice = (Button) findViewById(R.id.buttondice);
-        bt_roll = (Button) findViewById(R.id.buttonroll);
+        bt_roulette = (Button) findViewById(R.id.buttonroulette);
         bt_chess = (Button) findViewById(R.id.buttonchess);
         bt_chronometer = (Button) findViewById(R.id.buttonchronometer);
 
         bt_dice.setOnClickListener(btDiceOnClickListener);
-        bt_roll.setOnClickListener(btRollOnClickListener);
+        bt_roulette.setOnClickListener(btRouletteOnClickListener);
         bt_chess.setOnClickListener(btChessOnClickListener);
         bt_chronometer.setOnClickListener(btChronometerOnClickListener);
 
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener btRollOnClickListener = new View.OnClickListener() {
+    private View.OnClickListener btRouletteOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Toast.makeText(MainActivity.this, "Roll", Toast.LENGTH_LONG).show();

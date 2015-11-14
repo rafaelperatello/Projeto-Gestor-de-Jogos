@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:text="New Button"
-            android:id="@+id/buttonroll" />
+            android:id="@+id/buttonroulette" />
     </LinearLayout>
 
     <LinearLayout
