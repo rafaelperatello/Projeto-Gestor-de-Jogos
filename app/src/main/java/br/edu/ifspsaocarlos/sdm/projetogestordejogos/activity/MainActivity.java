@@ -32,17 +32,6 @@ public class MainActivity extends AppCompatActivity {
         bt_chess.setOnClickListener(btChessOnClickListener);
         bt_chronometer.setOnClickListener(btChronometerOnClickListener);
 
-//        Drawable ic_dice = getResources().getDrawable( R.drawable.dice );
-//        Drawable ic_roulette = getResources().getDrawable( R.drawable.roulette );
-//        Drawable ic_chess = getResources().getDrawable( R.drawable.chess );
-//        Drawable ic_chronometer = getResources().getDrawable( R.drawable.chronometer);
-//
-//        ColorFilter filter = new LightingColorFilter( Color.WHITE, Color.WHITE);
-//        ic_dice.setColorFilter(filter);
-//        ic_roulette.setColorFilter(filter);
-//        ic_chess.setColorFilter(filter);
-//        ic_chronometer.setColorFilter(filter);
-
         setupWindowAnimations();
     }
 
