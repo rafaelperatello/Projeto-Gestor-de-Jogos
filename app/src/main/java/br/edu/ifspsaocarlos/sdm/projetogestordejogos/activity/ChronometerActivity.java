@@ -4,19 +4,41 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.Toast;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
+import util.Util;
 
 public class ChronometerActivity extends AppCompatActivity {
+    private Chronometer chronometer;
+    private FloatingActionButton fab;
+    private Drawable ic_play, ic_pause;
+
+    private int chonometerStatus = 0;
+    private long baseSystemTime;
+
+    //Controlador de ação do FAB
+    private final int STOPED = 0;
+    private final int STARTED = 1;
+    private final int PAUSED = 2;
+
+    //Controlador de ação do conometro
+    private final int START = 0;
+    private final int STOP = 1;
+    private final int RESTART = 2;
+    private final int RESET = 3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +47,32 @@ public class ChronometerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
+        ic_play = getResources().getDrawable(android.R.drawable.ic_media_play);
+        ic_pause = getResources().getDrawable(android.R.drawable.ic_media_pause);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Log.d(Util.DEGUB_NAME, "chronometer statuts: " + chonometerStatus);
+
+                switch (chonometerStatus) {
+                    case STOPED:
+                        chronometerControl(START);
+                        chonometerStatus = STARTED;
+                        break;
+
+                    case STARTED:
+                        chronometerControl(STOP);
+                        chonometerStatus = PAUSED;
+                        break;
+
+                    case PAUSED:
+                        chronometerControl(RESTART);
+                        chonometerStatus = STARTED;
+                        break;
+                }
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -66,7 +108,7 @@ public class ChronometerActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_reset:
-                Toast.makeText(this, "Reset", Toast.LENGTH_SHORT).show();
+                chronometerControl(RESET);
                 break;
 
             default:
@@ -74,5 +116,60 @@ public class ChronometerActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private void chronometerControl(int status){
+        Log.d(Util.DEGUB_NAME, "System: " + SystemClock.elapsedRealtime() + " Chronometer base: " + chronometer.getBase());
+
+        switch (status){
+            case START:
+                baseSystemTime = SystemClock.elapsedRealtime();
+                chronometer.setBase(SystemClock.elapsedRealtime());
+
+                chronometer.start();
+                fab.setImageDrawable(ic_pause);
+
+                Log.d(Util.DEGUB_NAME, "Start");
+                break;
+
+            case STOP:
+                chronometer.stop();
+                fab.setImageDrawable(ic_play);
+
+                Log.d(Util.DEGUB_NAME, "Stop");
+                break;
+
+            case RESTART:
+                int stoppedMilliseconds = 0;
+
+                String chronoText = chronometer.getText().toString();
+                String array[] = chronoText.split(":");
+                if (array.length == 2) {
+                    stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 1000
+                            + Integer.parseInt(array[1]) * 1000;
+                } else if (array.length == 3) {
+                    stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 60 * 1000
+                            + Integer.parseInt(array[1]) * 60 * 1000
+                            + Integer.parseInt(array[2]) * 1000;
+                }
+
+                chronometer.setBase(SystemClock.elapsedRealtime() - stoppedMilliseconds);
+
+                chronometer.start();
+                fab.setImageDrawable(ic_pause);
+
+                Log.d(Util.DEGUB_NAME, "Restart");
+                break;
+
+            case RESET:
+                chonometerStatus = STOPED;
+
+                chronometer.stop();
+                chronometer.setBase(SystemClock.elapsedRealtime());
+                fab.setImageDrawable(ic_play);
+
+                Log.d(Util.DEGUB_NAME, "Reset");
+                break;
+        }
     }
 }
