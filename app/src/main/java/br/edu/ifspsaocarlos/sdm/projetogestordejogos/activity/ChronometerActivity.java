@@ -126,7 +126,6 @@ public class ChronometerActivity extends AppCompatActivity {
         switch (status){
             case START:
                 //Inicia o cronometro com a base de tempo sendo a mesma do sistema
-                baseSystemTime = SystemClock.elapsedRealtime();
                 chronometer.setBase(SystemClock.elapsedRealtime());
 
                 chronometer.start();
