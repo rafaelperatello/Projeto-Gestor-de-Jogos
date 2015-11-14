@@ -59,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btRouletteOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(MainActivity.this, "Roll", Toast.LENGTH_LONG).show();
+//            Toast.makeText(MainActivity.this, "Roll", Toast.LENGTH_LONG).show();
+
+            Intent intentRoulette = new Intent(MainActivity.this, RouletteActivity.class);
+            startActivity(intentRoulette);
         }
     };
 
