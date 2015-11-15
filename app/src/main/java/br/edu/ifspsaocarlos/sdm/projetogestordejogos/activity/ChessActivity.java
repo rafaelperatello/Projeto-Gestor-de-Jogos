@@ -166,38 +166,45 @@ public class ChessActivity extends AppCompatActivity {
     }
 
     private void configUser(){
-        MaterialDialog.Builder mdialog = new MaterialDialog.Builder(this);
+        MaterialDialog mdialog = new MaterialDialog.Builder(this)
+                .title(R.string.user_config_activity_name)
+                .customView(R.layout.activity_user_config, true)
+                .positiveText(R.string.ok)
+                .negativeText(R.string.cancel)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        Log.d(Util.DEGUB_NAME, "Botão Confirmar");
+                        RelativeLayout text = (RelativeLayout) dialog.getCustomView();
 
-        mdialog.title(R.string.user_config_activity_name);
-        mdialog.customView(R.layout.activity_user_config, true);
-        mdialog.positiveText(R.string.ok);
-        mdialog.negativeText(R.string.cancel);
+                        EditText editPlayer1 = (EditText) text.getChildAt(0);
+                        EditText editPlayer2 = (EditText) text.getChildAt(1);
 
-        mdialog.onPositive(new MaterialDialog.SingleButtonCallback() {
-            @Override
-            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                Log.d(Util.DEGUB_NAME, "Botão Confirmar");
-                RelativeLayout text = (RelativeLayout) dialog.getCustomView();
+                        nameJogador1 = editPlayer1.getText().toString();
+                        nameJogador2 = editPlayer2.getText().toString();
 
-                EditText editPlayer1 = (EditText)text.getChildAt(0);
-                EditText editPlayer2 = (EditText)text.getChildAt(1);
+                        updatePlayersNames();
 
-                nameJogador1 = editPlayer1.getText().toString();
-                nameJogador2 = editPlayer2.getText().toString();
+                        Log.d(Util.DEGUB_NAME, "Jogador 1: " + nameJogador1);
+                        Log.d(Util.DEGUB_NAME, "Jogador 2: " + nameJogador2);
+                    }
+                })
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        Log.d(Util.DEGUB_NAME, "Botão Cancelar");
+                    }
+                })
+                .build();
 
-                updatePlayersNames();
 
-                Log.d(Util.DEGUB_NAME, "Jogador 1: " + nameJogador1);
-                Log.d(Util.DEGUB_NAME, "Jogador 2: " + nameJogador2);
-            }
-        });
+        RelativeLayout text = (RelativeLayout) mdialog.getCustomView();
 
-        mdialog.onNegative(new MaterialDialog.SingleButtonCallback() {
-            @Override
-            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                Log.d(Util.DEGUB_NAME, "Botão Cancelar");
-            }
-        });
+        EditText editPlayer1 = (EditText) text.getChildAt(0);
+        EditText editPlayer2 = (EditText) text.getChildAt(1);
+
+        editPlayer1.setText(nameJogador1);
+        editPlayer2.setText(nameJogador2);
 
         mdialog.show();
     }
