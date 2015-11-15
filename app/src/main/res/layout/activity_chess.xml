@@ -35,23 +35,103 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true">
 
-            <Button
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="0.5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:textSize="50dp"
-                android:text="@string/chess_activity_player_1"
-                android:tint="@android:color/white"
-                android:id="@+id/buttonPlayer1"/>
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
 
-            <Button
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/chess_activity_player_1"
+                    android:id="@+id/textViewPlayer1"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/chess_activity_player_1"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/chess_activity_moves_value"
+                    android:id="@+id/textViewMovesPlayer1"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/chess_activity_moves"
+                    android:layout_weight="0.1" />
+
+                <Chronometer
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chronometerPlayer1"
+                    android:textSize="70dp"
+                    android:layout_weight="0.8"
+                    android:layout_centerInParent="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="0.5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:textSize="50dp"
-                android:text="@string/chess_activity_player_2"
-                android:tint="@android:color/white"
-                android:id="@+id/buttonPlayer2"/>
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/chess_activity_player_2"
+                    android:id="@+id/textViewPlayer2"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/chess_activity_player_2"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/chess_activity_moves_value"
+                    android:id="@+id/textViewMovesPlayer2"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/chess_activity_moves"
+                    android:layout_weight="0.1" />
+
+                <Chronometer
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chronometerPlayer2"
+                    android:textSize="70dp"
+                    android:layout_weight="0.6"
+                    android:layout_centerInParent="true" />
+
+
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 

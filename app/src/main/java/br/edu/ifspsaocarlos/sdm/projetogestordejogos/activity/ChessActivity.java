@@ -17,6 +17,7 @@ import android.widget.Toast;
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 
 public class ChessActivity extends AppCompatActivity {
+    private int movePlayer1, movePlayer2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class ChessActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                startGame();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,4 +70,8 @@ public class ChessActivity extends AppCompatActivity {
         return true;
     }
 
+    private void startGame(){
+        movePlayer1 = 0;
+        movePlayer2 = 0;
+    }
 }
