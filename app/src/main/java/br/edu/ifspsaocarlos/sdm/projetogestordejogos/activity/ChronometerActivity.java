@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -24,9 +23,7 @@ public class ChronometerActivity extends AppCompatActivity {
     private Chronometer chronometer;
     private FloatingActionButton fab;
     private Drawable ic_play, ic_pause;
-
     private int chonometerStatus = 0;
-    private long baseSystemTime;
 
     //Controlador de ação do FAB
     private final int STOPED = 0;
