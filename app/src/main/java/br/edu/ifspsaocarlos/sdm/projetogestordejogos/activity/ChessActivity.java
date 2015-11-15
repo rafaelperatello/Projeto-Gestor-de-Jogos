@@ -1,6 +1,8 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -215,16 +217,7 @@ public class ChessActivity extends AppCompatActivity {
                         EditText editPlayer1 = (EditText) text.getChildAt(0);
                         EditText editPlayer2 = (EditText) text.getChildAt(1);
 
-                        nameJogador1 = editPlayer1.getText().toString();
-                        nameJogador2 = editPlayer2.getText().toString();
-
-                        Intent intent = new Intent();
-                        intent.putExtra(Util.PLAYER1_NAME, nameJogador1);
-                        intent.putExtra(Util.PLAYER2_NAME, nameJogador2);
-
-                        setResult(Util.CHESS_RESULT_NEW_NAME, intent);
-
-                        updatePlayersNames();
+                        saveNames(editPlayer1.getText().toString(), editPlayer2.getText().toString());
 
                         Log.d(Util.DEGUB_NAME, "Jogador 1: " + nameJogador1);
                         Log.d(Util.DEGUB_NAME, "Jogador 2: " + nameJogador2);
@@ -249,6 +242,23 @@ public class ChessActivity extends AppCompatActivity {
 
         mdialog.show();
     }
+
+    private void saveNames(String name1, String name2){
+        nameJogador1 = name1;
+        nameJogador2 = name2;
+
+        SharedPreferences sharedpreferences = getSharedPreferences(Util.APP_SHARED_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+
+        editor.putString(Util.PLAYER1_NAME, nameJogador1);
+        editor.putString(Util.PLAYER2_NAME, nameJogador2);
+        editor.commit();
+
+        setResult(Util.CHESS_RESULT_NEW_NAME);
+
+        updatePlayersNames();
+    }
+
 
     private void startGame(){
         movePlayer1 = 0;
