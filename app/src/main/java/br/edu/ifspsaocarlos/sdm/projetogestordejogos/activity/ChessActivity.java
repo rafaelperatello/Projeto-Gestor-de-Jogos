@@ -186,15 +186,33 @@ public class ChessActivity extends AppCompatActivity {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        showScore();
+                    }
+                })
+                .show();
+    }
+
+    public void showScore(){
+        new MaterialDialog.Builder(this)
+                .title(R.string.chess_activity_result_title)
+                .content(nameJogador1
+                        + "\nJogadas: "
+                        + movePlayer1
+                        + "\nTempo: "
+                        + chronometerPlayer1.getText()
+                        + "\n\n"
+                        +nameJogador2
+                        + "\nJogadas: "
+                        + movePlayer2
+                        + "\nTempo: "
+                        + chronometerPlayer2.getText())
+                .positiveText(R.string.ok)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         resetGame();
                     }
                 })
-//                .onNegative(new MaterialDialog.SingleButtonCallback() {
-//                    @Override
-//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-//
-//                    }
-//                })
                 .show();
     }
 
