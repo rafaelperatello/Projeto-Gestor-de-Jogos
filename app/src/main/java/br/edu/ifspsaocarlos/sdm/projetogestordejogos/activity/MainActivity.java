@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
+import util.Util;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton bt_dice;
@@ -63,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intentChess = new Intent(MainActivity.this, ChessActivity.class);
+
+//            intentChess.putExtra(Util.PLAYER1_NAME, "Rafael");
+//            intentChess.putExtra(Util.PLAYER2_NAME, "Manolo");
+
             startActivity(intentChess);
         }
     };

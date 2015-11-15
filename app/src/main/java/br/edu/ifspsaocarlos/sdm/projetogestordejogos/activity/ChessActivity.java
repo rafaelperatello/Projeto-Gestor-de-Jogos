@@ -1,5 +1,6 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -65,8 +66,23 @@ public class ChessActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        nameJogador1 = "Jogador 1";
-        nameJogador2 = "Jogador 2";
+        Intent intent = getIntent();
+        //Nome do jogador 1
+        if (intent.hasExtra(Util.PLAYER1_NAME)){
+            nameJogador1 = intent.getStringExtra(Util.PLAYER1_NAME);
+        }
+        else{
+            nameJogador1 = "Jogador 1";
+        }
+
+        //Nome do jogador 2
+        if (intent.hasExtra(Util.PLAYER2_NAME)){
+            nameJogador2 = intent.getStringExtra(Util.PLAYER2_NAME);
+        }
+        else{
+            nameJogador2 = "Jogador 2";
+        }
+
 
         textNamePlayer1 = (TextView)findViewById(R.id.textViewPlayer1);
         textNamePlayer2 = (TextView)findViewById(R.id.textViewPlayer2);
