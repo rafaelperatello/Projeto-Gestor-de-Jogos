@@ -8,7 +8,7 @@
     tools:context="br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity.UserConfigActivity">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="@string/user_config_activity_player_1"
@@ -18,7 +18,7 @@
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="@string/user_config_activity_player_2"

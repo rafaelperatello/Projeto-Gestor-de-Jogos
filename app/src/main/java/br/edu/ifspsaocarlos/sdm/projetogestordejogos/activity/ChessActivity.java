@@ -1,5 +1,8 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -16,7 +19,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -142,8 +147,9 @@ public class ChessActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_setting:
-                Intent intentDice = new Intent(ChessActivity.this, UserConfigActivity.class);
-                startActivity(intentDice);
+//                Intent intentDice = new Intent(ChessActivity.this, UserConfigActivity.class);
+//                startActivity(intentDice);
+                configUser();
                 break;
 
             default:
@@ -151,6 +157,25 @@ public class ChessActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private void configUser(){
+        AlertDialog alertDialog = new AlertDialog.Builder(
+                this,
+                R.style.AppMyDialogTheme)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Delete Action
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Cancel Action
+                    }
+                }).setView(R.layout.activity_user_config)
+                .create();
     }
 
     private void startGame(){
