@@ -66,6 +66,8 @@ public class ChessActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setResult(Util.CHESS_RESULT_NO_NEW_NAME);
+
         Intent intent = getIntent();
         //Nome do jogador 1
         if (intent.hasExtra(Util.PLAYER1_NAME)){
@@ -215,6 +217,12 @@ public class ChessActivity extends AppCompatActivity {
 
                         nameJogador1 = editPlayer1.getText().toString();
                         nameJogador2 = editPlayer2.getText().toString();
+
+                        Intent intent = new Intent();
+                        intent.putExtra(Util.PLAYER1_NAME, nameJogador1);
+                        intent.putExtra(Util.PLAYER2_NAME, nameJogador2);
+
+                        setResult(Util.CHESS_RESULT_NEW_NAME, intent);
 
                         updatePlayersNames();
 

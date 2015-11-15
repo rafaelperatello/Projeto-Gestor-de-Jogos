@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Slide;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -17,11 +18,15 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton bt_chess;
     private ImageButton bt_chronometer;
 
+    private String nameJogador1, nameJogador2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        nameJogador1 = "Rafael";
+        nameJogador2 = "João";
 
         bt_dice = (ImageButton) findViewById(R.id.buttondice);
         bt_roulette = (ImageButton) findViewById(R.id.buttonroulette);
@@ -65,10 +70,11 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intentChess = new Intent(MainActivity.this, ChessActivity.class);
 
-//            intentChess.putExtra(Util.PLAYER1_NAME, "Rafael");
-//            intentChess.putExtra(Util.PLAYER2_NAME, "Manolo");
+            intentChess.putExtra(Util.PLAYER1_NAME, nameJogador1);
+            intentChess.putExtra(Util.PLAYER2_NAME, nameJogador2);
 
-            startActivity(intentChess);
+//            startActivity(intentChess);
+            startActivityForResult(intentChess, Util.CHESS);
         }
     };
 
@@ -79,4 +85,26 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intentChronometer);
         }
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Util.CHESS) {
+            if (resultCode == Util.CHESS_RESULT_NEW_NAME) {
+                Log.d(Util.DEGUB_NAME, "novo nome setado");
+
+                //Nome do jogador 1
+                if (data.hasExtra(Util.PLAYER1_NAME)){
+                    nameJogador1 = data.getStringExtra(Util.PLAYER1_NAME);
+                }
+
+                //Nome do jogador 2
+                if (data.hasExtra(Util.PLAYER2_NAME)){
+                    nameJogador2 = data.getStringExtra(Util.PLAYER2_NAME);
+                }
+            }
+            else if (resultCode == Util.CHESS_RESULT_NO_NEW_NAME) {
+                Log.d(Util.DEGUB_NAME, "nome é o mesmo");
+            }
+        }
+    }
 }
