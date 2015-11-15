@@ -6,9 +6,6 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
-    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -62,8 +59,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.UserConfigActivity" >
+
+        <activity
+            android:name=".activity.UserConfigActivity"
+            android:label="@string/user_config_activity_name"
+            android:theme="@style/AppMyDialogTheme">
         </activity>
+
     </application>
 
 </manifest>

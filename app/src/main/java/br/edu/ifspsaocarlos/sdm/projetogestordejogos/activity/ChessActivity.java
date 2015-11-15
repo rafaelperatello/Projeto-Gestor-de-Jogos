@@ -142,7 +142,8 @@ public class ChessActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_setting:
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Intent intentDice = new Intent(ChessActivity.this, UserConfigActivity.class);
+                startActivity(intentDice);
                 break;
 
             default:
