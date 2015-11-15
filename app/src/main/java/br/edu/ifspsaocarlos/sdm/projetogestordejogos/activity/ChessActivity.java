@@ -1,10 +1,5 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -12,24 +7,18 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -151,7 +140,7 @@ public class ChessActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_reset:
-                resetGame();
+                confirmReset();
                 break;
 
             case R.id.action_setting:
@@ -165,7 +154,35 @@ public class ChessActivity extends AppCompatActivity {
         return true;
     }
 
+    public void confirmReset(){
+        if(gameStatus == STARTED)
+            pauseGame();
+
+        new MaterialDialog.Builder(this)
+                .title(R.string.chess_activity_confirm_reset_title)
+                .content(R.string.chess_activity_confirm_reset)
+                .positiveText(R.string.ok)
+                .negativeText(R.string.cancel)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        resetGame();
+                    }
+                })
+//                .onNegative(new MaterialDialog.SingleButtonCallback() {
+//                    @Override
+//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+//
+//                    }
+//                })
+                .show();
+    }
+
+
     private void configUser(){
+        if(gameStatus == STARTED)
+            pauseGame();
+
         MaterialDialog mdialog = new MaterialDialog.Builder(this)
                 .title(R.string.user_config_activity_name)
                 .customView(R.layout.activity_user_config, true)

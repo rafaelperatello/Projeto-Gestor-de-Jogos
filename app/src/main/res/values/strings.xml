@@ -19,6 +19,8 @@
     <string name="chess_activity_player_2">Jogador 2</string>
     <string name="chess_activity_moves">Jogadas</string>
     <string name="chess_activity_moves_value">0</string>
+    <string name="chess_activity_confirm_reset_title">Aviso</string>
+    <string name="chess_activity_confirm_reset">Deseja reiniciar o jogo?</string>
 
     <string name="user_config_activity_player_1">Nome do jogador 1</string>
     <string name="user_config_activity_player_2">Nome do jogador 2</string>
