@@ -30,8 +30,12 @@ public class ChessActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private LinearLayout layoutPlayer1, layoutPlayer2;
     private TextView textMovesPlayer1, textMovesPlayer2;
+    private TextView textNamePlayer1, textNamePlayer2;
     private Drawable ic_play, ic_pause;
 
+    private String nameJogador1, nameJogador2;
+
+    //Controlador do jogo
     private int gameStatus = 0;
     private int movePlayer1, movePlayer2;
     private int playerMoving;
@@ -58,6 +62,14 @@ public class ChessActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chess);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        nameJogador1 = "Jogador 1";
+        nameJogador2 = "Jogador 2";
+
+        textNamePlayer1 = (TextView)findViewById(R.id.textViewPlayer1);
+        textNamePlayer2 = (TextView)findViewById(R.id.textViewPlayer2);
+
+        updatePlayersNames();
 
         textMovesPlayer1 = (TextView)findViewById(R.id.textViewMovesPlayer1);
         textMovesPlayer2 = (TextView)findViewById(R.id.textViewMovesPlayer2);
@@ -240,7 +252,10 @@ public class ChessActivity extends AppCompatActivity {
         textMovesPlayer2.setText("" + movePlayer2);
     }
 
-
+    private void updatePlayersNames(){
+        textNamePlayer1.setText(nameJogador1);
+        textNamePlayer2.setText(nameJogador2);
+    }
 
     private void chronometerControl(int status, Chronometer chronometer){
         Log.d(Util.DEGUB_NAME, "System: " + SystemClock.elapsedRealtime() + " Chronometer base: " + chronometer.getBase());
