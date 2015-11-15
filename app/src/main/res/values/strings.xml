@@ -23,4 +23,7 @@
     <string name="user_config_activity_player_1">Nome do jogador 1</string>
     <string name="user_config_activity_player_2">Nome do jogador 2</string>
 
+    <string name="ok">Confirmar</string>
+    <string name="cancel">Cancelar</string>
+
 </resources>

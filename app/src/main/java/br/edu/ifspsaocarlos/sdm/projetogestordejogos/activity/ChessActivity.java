@@ -2,6 +2,7 @@ package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,10 +10,12 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
@@ -21,10 +24,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 import util.Util;
@@ -147,8 +155,6 @@ public class ChessActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_setting:
-//                Intent intentDice = new Intent(ChessActivity.this, UserConfigActivity.class);
-//                startActivity(intentDice);
                 configUser();
                 break;
 
@@ -160,22 +166,40 @@ public class ChessActivity extends AppCompatActivity {
     }
 
     private void configUser(){
-        AlertDialog alertDialog = new AlertDialog.Builder(
-                this,
-                R.style.AppMyDialogTheme)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Delete Action
-                    }
-                })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Cancel Action
-                    }
-                }).setView(R.layout.activity_user_config)
-                .create();
+        MaterialDialog.Builder mdialog = new MaterialDialog.Builder(this);
+
+        mdialog.title(R.string.user_config_activity_name);
+        mdialog.customView(R.layout.activity_user_config, true);
+        mdialog.positiveText(R.string.ok);
+        mdialog.negativeText(R.string.cancel);
+
+        mdialog.onPositive(new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                Log.d(Util.DEGUB_NAME, "Botão Confirmar");
+                RelativeLayout text = (RelativeLayout) dialog.getCustomView();
+
+                EditText editPlayer1 = (EditText)text.getChildAt(0);
+                EditText editPlayer2 = (EditText)text.getChildAt(1);
+
+                nameJogador1 = editPlayer1.getText().toString();
+                nameJogador2 = editPlayer2.getText().toString();
+
+                updatePlayersNames();
+
+                Log.d(Util.DEGUB_NAME, "Jogador 1: " + nameJogador1);
+                Log.d(Util.DEGUB_NAME, "Jogador 2: " + nameJogador2);
+            }
+        });
+
+        mdialog.onNegative(new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                Log.d(Util.DEGUB_NAME, "Botão Cancelar");
+            }
+        });
+
+        mdialog.show();
     }
 
     private void startGame(){
