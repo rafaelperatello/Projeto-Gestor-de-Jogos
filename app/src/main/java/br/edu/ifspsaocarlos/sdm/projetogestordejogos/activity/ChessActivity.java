@@ -3,9 +3,11 @@ package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
@@ -279,6 +281,8 @@ public class ChessActivity extends AppCompatActivity {
 
 
     private void startGame(){
+        fab.setImageDrawable(ic_pause);
+
         movePlayer1 = 0;
         movePlayer2 = 0;
         playerMoving = PLAYER1;
@@ -286,7 +290,6 @@ public class ChessActivity extends AppCompatActivity {
         layoutPlayer1.setEnabled(true);
         layoutPlayer2.setEnabled(false);
 
-        fab.setImageDrawable(ic_pause);
 
         chronometerControl(START, chronometerPlayer1);
         chronometerControl(START, chronometerPlayer2);
