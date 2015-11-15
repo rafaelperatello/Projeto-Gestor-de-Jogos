@@ -145,6 +145,7 @@ public class ChessActivity extends AppCompatActivity {
         movePlayer2 = 0;
         playerMoving = PLAYER1;
 
+        layoutPlayer1.setEnabled(true);
         layoutPlayer2.setEnabled(false);
 
         fab.setImageDrawable(ic_pause);
@@ -159,6 +160,9 @@ public class ChessActivity extends AppCompatActivity {
     private void pauseGame(){
         fab.setImageDrawable(ic_play);
 
+        layoutPlayer1.setEnabled(false);
+        layoutPlayer2.setEnabled(false);
+
         chronometerControl(STOP, chronometerPlayer1);
         chronometerControl(STOP, chronometerPlayer2);
 
@@ -170,9 +174,12 @@ public class ChessActivity extends AppCompatActivity {
 
         if(playerMoving == PLAYER1){
             chronometerControl(RESTART, chronometerPlayer1);
+            layoutPlayer1.setEnabled(true);
         }
         else if (playerMoving == PLAYER2){
             chronometerControl(RESTART, chronometerPlayer2);
+            layoutPlayer2.setEnabled(true);
+
         }
 
         gameStatus = STARTED;
@@ -183,6 +190,10 @@ public class ChessActivity extends AppCompatActivity {
 
         chronometerControl(RESET, chronometerPlayer1);
         chronometerControl(RESET, chronometerPlayer2);
+
+        layoutPlayer1.setEnabled(false);
+        layoutPlayer2.setEnabled(false);
+
 
         movePlayer1 = 0;
         movePlayer2 = 0;
