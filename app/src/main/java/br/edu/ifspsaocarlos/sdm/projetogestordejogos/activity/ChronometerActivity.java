@@ -5,6 +5,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.Toast;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 import util.Util;
@@ -58,17 +62,14 @@ public class ChronometerActivity extends AppCompatActivity {
                 switch (chonometerStatus) {
                     case STOPED:
                         chronometerControl(START);
-                        chonometerStatus = STARTED;
                         break;
 
                     case STARTED:
                         chronometerControl(STOP);
-                        chonometerStatus = PAUSED;
                         break;
 
                     case PAUSED:
                         chronometerControl(RESTART);
-                        chonometerStatus = STARTED;
                         break;
                 }
             }
@@ -106,7 +107,7 @@ public class ChronometerActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_reset:
-                chronometerControl(RESET);
+                confirmReset();
                 break;
 
             default:
@@ -114,6 +115,24 @@ public class ChronometerActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    public void confirmReset(){
+        if(chonometerStatus == STARTED)
+            chronometerControl(STOP);
+
+        new MaterialDialog.Builder(this)
+                .title(R.string.util_advise_title)
+                .content(R.string.util_confirm_reset_chronometer)
+                .positiveText(R.string.ok)
+                .negativeText(R.string.cancel)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        chronometerControl(RESET);
+                    }
+                })
+                .show();
     }
 
     //Controlador do cronometro
@@ -128,6 +147,8 @@ public class ChronometerActivity extends AppCompatActivity {
                 chronometer.start();
                 fab.setImageDrawable(ic_pause);
 
+                chonometerStatus = STARTED;
+
                 Log.d(Util.DEGUB_NAME, "Start");
                 break;
 
@@ -135,6 +156,8 @@ public class ChronometerActivity extends AppCompatActivity {
                 //Para o cronometro
                 chronometer.stop();
                 fab.setImageDrawable(ic_play);
+
+                chonometerStatus = PAUSED;
 
                 Log.d(Util.DEGUB_NAME, "Stop");
                 break;
@@ -158,16 +181,18 @@ public class ChronometerActivity extends AppCompatActivity {
                 chronometer.start();
                 fab.setImageDrawable(ic_pause);
 
+                chonometerStatus = STARTED;
+
                 Log.d(Util.DEGUB_NAME, "Restart");
                 break;
 
             case RESET:
                 //Reseta o cronometro
-                chonometerStatus = STOPED;
-
                 chronometer.stop();
                 chronometer.setBase(SystemClock.elapsedRealtime());
                 fab.setImageDrawable(ic_play);
+
+                chonometerStatus = STOPED;
 
                 Log.d(Util.DEGUB_NAME, "Reset");
                 break;
