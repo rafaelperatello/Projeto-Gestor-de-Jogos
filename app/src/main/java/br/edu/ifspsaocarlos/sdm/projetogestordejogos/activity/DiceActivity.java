@@ -18,6 +18,7 @@ import android.widget.Toast;
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 
 public class DiceActivity extends AppCompatActivity {
+    private Drawable face_1, face_2, face_3, face_4, face_5, face_6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class DiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dice);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        setFaces();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -76,5 +79,13 @@ public class DiceActivity extends AppCompatActivity {
         return true;
     }
 
+    private void setFaces(){
+        face_1 = getResources().getDrawable(R.drawable.dice1);
+        face_2 = getResources().getDrawable(R.drawable.dice2);
+        face_3 = getResources().getDrawable(R.drawable.dice3);
+        face_4 = getResources().getDrawable(R.drawable.dice4);
+        face_5 = getResources().getDrawable(R.drawable.dice5);
+        face_6 = getResources().getDrawable(R.drawable.dice6);
+    }
 
 }
