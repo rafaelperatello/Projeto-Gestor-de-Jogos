@@ -181,8 +181,8 @@ public class ChessActivity extends AppCompatActivity {
             pauseGame();
 
         new MaterialDialog.Builder(this)
-                .title(R.string.chess_activity_confirm_reset_title)
-                .content(R.string.chess_activity_confirm_reset)
+                .title(R.string.util_advise_title)
+                .content(R.string.util_confirm_reset_game)
                 .positiveText(R.string.ok)
                 .negativeText(R.string.cancel)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
@@ -196,7 +196,7 @@ public class ChessActivity extends AppCompatActivity {
 
     public void showScore(){
         new MaterialDialog.Builder(this)
-                .title(R.string.chess_activity_result_title)
+                .title(R.string.util_result_title)
                 .content(nameJogador1
                         + "\nJogadas: "
                         + movePlayer1
