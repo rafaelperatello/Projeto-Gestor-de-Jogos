@@ -1,15 +1,10 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
-import android.app.ActionBar;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -18,8 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import java.util.Random;
 
@@ -28,7 +21,7 @@ import util.Util;
 
 public class DiceActivity extends AppCompatActivity {
     private Drawable face_1, face_2, face_3, face_4, face_5, face_6;
-    private ImageView dice;
+    private ImageView dice_1, dice_2, dice_3, dice_4;
     private LinearLayout table;
     AnimationDrawable animation;
 
@@ -40,8 +33,11 @@ public class DiceActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         table = (LinearLayout )findViewById(R.id.linearLayoutTable);
-        dice = (ImageView)findViewById(R.id.imageViewDice);
-    
+        dice_1 = (ImageView)findViewById(R.id.imageViewDice1);
+        dice_2 = (ImageView)findViewById(R.id.imageViewDice2);
+        dice_3 = (ImageView)findViewById(R.id.imageViewDice3);
+        dice_4 = (ImageView)findViewById(R.id.imageViewDice4);
+
         setFaces();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -79,7 +75,10 @@ public class DiceActivity extends AppCompatActivity {
     }
 
     private void sortDice(){
-        setAnimationOnDice(dice);
+        setAnimationOnDice(dice_1);
+        setAnimationOnDice(dice_2);
+        setAnimationOnDice(dice_3);
+        setAnimationOnDice(dice_4);
     }
 
     private void setAnimationOnDice(ImageView dice){
