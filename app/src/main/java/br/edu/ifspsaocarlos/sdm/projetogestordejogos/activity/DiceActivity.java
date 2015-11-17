@@ -3,7 +3,9 @@ package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +27,7 @@ import util.Util;
 public class DiceActivity extends AppCompatActivity {
     private Drawable face_1, face_2, face_3, face_4, face_5, face_6;
     private ImageView imageView;
+    AnimationDrawable animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,9 +91,23 @@ public class DiceActivity extends AppCompatActivity {
     }
 
     private void sortDice(){
-        int numero = sortNumber();
+        animation = new AnimationDrawable();
+        animation.addFrame(getFace(sortNumber()), Util.ANIMDURATION);
+        animation.addFrame(getFace(sortNumber()), Util.ANIMDURATION);
+        animation.addFrame(getFace(sortNumber()), Util.ANIMDURATION);
 
-        imageView.setImageDrawable(getFace(numero));
+        imageView.setImageDrawable(animation);
+
+        try{
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    animation.start();
+                }
+            }, 5000);
+        } catch (Exception e) {
+            Log.d(Util.DEGUB_NAME, "error in animation: " + e);
+        }
     }
 
     private Drawable getFace(int face){

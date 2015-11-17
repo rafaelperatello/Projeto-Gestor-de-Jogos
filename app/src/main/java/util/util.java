@@ -7,6 +7,7 @@ public class Util {
 
     public static final String APP_SHARED_FILE = "secret_file";
 
+    public static final int ANIMDURATION = 300;
 
     public static final int DICE = 0;
     public static final int ROULETTE = 1;
