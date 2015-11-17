@@ -59,18 +59,10 @@ public class DiceActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dice_activity_bar, menu);
 
-        setMenuColor(menu.findItem(R.id.action_add).getIcon());
-        setMenuColor(menu.findItem(R.id.action_remove).getIcon());
 
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void setMenuColor(Drawable d){
-        if (d != null) {
-            d.mutate();
-            d.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-        }
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -78,14 +70,6 @@ public class DiceActivity extends AppCompatActivity {
             case android.R.id.home:
                 super.onBackPressed();
                 return true;
-
-            case R.id.action_add:
-                Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.action_remove:
-                Toast.makeText(this, "Remove", Toast.LENGTH_SHORT).show();
-                break;
 
             default:
                 break;
