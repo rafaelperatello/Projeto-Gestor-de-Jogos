@@ -17,6 +17,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -26,7 +28,8 @@ import util.Util;
 
 public class DiceActivity extends AppCompatActivity {
     private Drawable face_1, face_2, face_3, face_4, face_5, face_6;
-    private ImageView imageView;
+    private ImageView dice;
+    private LinearLayout table;
     AnimationDrawable animation;
 
     @Override
@@ -36,8 +39,9 @@ public class DiceActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        imageView = (ImageView)findViewById(R.id.imageViewDice);
-
+        table = (LinearLayout )findViewById(R.id.linearLayoutTable);
+        dice = (ImageView)findViewById(R.id.imageViewDice);
+    
         setFaces();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -91,23 +95,18 @@ public class DiceActivity extends AppCompatActivity {
     }
 
     private void sortDice(){
+        setAnimationOnDice(dice);
+    }
+
+    private void setAnimationOnDice(ImageView dice){
         animation = new AnimationDrawable();
         animation.addFrame(getFace(sortNumber()), Util.ANIMDURATION);
         animation.addFrame(getFace(sortNumber()), Util.ANIMDURATION);
         animation.addFrame(getFace(sortNumber()), Util.ANIMDURATION);
+        animation.setOneShot(true);
 
-        imageView.setImageDrawable(animation);
-
-        try{
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                public void run() {
-                    animation.start();
-                }
-            }, 5000);
-        } catch (Exception e) {
-            Log.d(Util.DEGUB_NAME, "error in animation: " + e);
-        }
+        dice.setImageDrawable(animation);
+        animation.start();
     }
 
     private Drawable getFace(int face){
