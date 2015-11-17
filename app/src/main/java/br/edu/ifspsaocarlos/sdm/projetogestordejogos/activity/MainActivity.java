@@ -11,12 +11,11 @@ import android.support.v7.widget.CardView;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
-import util.Util;
+import br.edu.ifspsaocarlos.sdm.projetogestordejogos.util.Util;
 
 public class MainActivity extends AppCompatActivity {
     private CardView bt_dice;
@@ -56,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 .rippleOverlay(true)
                 .rippleColor(Color.WHITE)
                 .rippleAlpha(0.1f)
+                .rippleRoundedCorners(4)
                 .rippleHover(true)
                 .rippleDelayClick(true)
                 .rippleDuration(350)

@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import java.util.Random;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
-import util.Util;
+import br.edu.ifspsaocarlos.sdm.projetogestordejogos.util.Util;
 
 public class DiceActivity extends AppCompatActivity {
     private Drawable face_1, face_2, face_3, face_4, face_5, face_6;

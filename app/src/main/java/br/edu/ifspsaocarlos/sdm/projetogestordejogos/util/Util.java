@@ -1,4 +1,4 @@
-package util;
+package br.edu.ifspsaocarlos.sdm.projetogestordejogos.util;
 
 public class Util {
     public static final String DEGUB_NAME = "Gestor Jogos";

@@ -22,7 +22,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
-import util.Util;
+import br.edu.ifspsaocarlos.sdm.projetogestordejogos.util.Util;
 
 public class ChronometerActivity extends AppCompatActivity {
     private Chronometer chronometer;

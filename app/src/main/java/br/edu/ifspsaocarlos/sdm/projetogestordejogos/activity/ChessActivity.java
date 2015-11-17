@@ -20,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,7 +29,8 @@ import com.afollestad.materialdialogs.Theme;
 import com.balysv.materialripple.MaterialRippleLayout;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
-import util.Util;
+import br.edu.ifspsaocarlos.sdm.projetogestordejogos.util.Util;
+
 
 public class ChessActivity extends AppCompatActivity {
     private Chronometer chronometerPlayer1;
@@ -186,6 +186,7 @@ public class ChessActivity extends AppCompatActivity {
                 .rippleOverlay(true)
                 .rippleColor(Color.WHITE)
                 .rippleAlpha(0.1f)
+                .rippleRoundedCorners(4)
                 .rippleHover(true)
                 .rippleDelayClick(true)
                 .rippleDuration(350)
