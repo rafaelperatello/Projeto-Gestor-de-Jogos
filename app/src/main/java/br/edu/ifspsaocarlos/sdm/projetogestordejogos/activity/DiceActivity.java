@@ -9,16 +9,22 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
+import util.Util;
 
 public class DiceActivity extends AppCompatActivity {
     private Drawable face_1, face_2, face_3, face_4, face_5, face_6;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +33,15 @@ public class DiceActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        imageView = (ImageView)findViewById(R.id.imageViewDice);
+
         setFaces();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                sortDice();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -77,6 +85,53 @@ public class DiceActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private void sortDice(){
+        int numero = sortNumber();
+
+        imageView.setImageDrawable(getFace(numero));
+    }
+
+    private Drawable getFace(int face){
+        Drawable faceDrawable = face_1;
+
+        switch (face) {
+            case 1:
+                faceDrawable = face_1;
+                break;
+
+            case 2:
+                faceDrawable =  face_2;
+            break;
+
+            case 3:
+                faceDrawable =  face_3;
+            break;
+
+            case 4:
+                faceDrawable =  face_4;
+            break;
+
+            case 5:
+                faceDrawable =  face_5;
+            break;
+
+            case 6:
+                faceDrawable =  face_6;
+            break;
+        }
+
+        return faceDrawable;
+    }
+
+    private int sortNumber(){
+        Random gerador = new Random();
+        int number = gerador.nextInt(6) +1;
+
+        Log.d(Util.DEGUB_NAME, "sorted number: " + number);
+
+        return number;
     }
 
     private void setFaces(){
