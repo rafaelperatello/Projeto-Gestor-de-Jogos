@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 import util.Util;
@@ -123,6 +124,7 @@ public class ChronometerActivity extends AppCompatActivity {
 
         new MaterialDialog.Builder(this)
                 .title(R.string.util_advise_title)
+                .theme(Theme.DARK)
                 .content(R.string.util_confirm_reset_chronometer)
                 .positiveText(R.string.ok)
                 .negativeText(R.string.cancel)

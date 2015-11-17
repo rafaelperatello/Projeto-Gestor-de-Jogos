@@ -3,16 +3,15 @@ package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -27,6 +26,8 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
+import com.balysv.materialripple.MaterialRippleLayout;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 import util.Util;
@@ -35,7 +36,7 @@ public class ChessActivity extends AppCompatActivity {
     private Chronometer chronometerPlayer1;
     private Chronometer chronometerPlayer2;
     private FloatingActionButton fab;
-    private LinearLayout layoutPlayer1, layoutPlayer2;
+    private CardView cardPlayer1, cardPlayer2;
     private TextView textMovesPlayer1, textMovesPlayer2;
     private TextView textNamePlayer1, textNamePlayer2;
     private Drawable ic_play, ic_pause;
@@ -101,10 +102,14 @@ public class ChessActivity extends AppCompatActivity {
         chronometerPlayer1 = (Chronometer) findViewById(R.id.chronometerPlayer1);
         chronometerPlayer2 = (Chronometer) findViewById(R.id.chronometerPlayer2);
 
-        layoutPlayer1 = (LinearLayout )findViewById(R.id.layoutPlayer1);
-        layoutPlayer2 = (LinearLayout )findViewById(R.id.layoutPlayer2);
-        layoutPlayer1.setOnClickListener(layoutPlayer1ClickListener);
-        layoutPlayer2.setOnClickListener(layoutPlayer2ClickListener);
+        cardPlayer1 = (CardView )findViewById(R.id.card_view_player1);
+        cardPlayer2 = (CardView )findViewById(R.id.card_view_player2);
+
+        cardPlayer1.setOnClickListener(layoutPlayer1ClickListener);
+        cardPlayer2.setOnClickListener(layoutPlayer2ClickListener);
+
+        setRipple(cardPlayer1);
+        setRipple(cardPlayer2);
 
         ic_play = getResources().getDrawable(android.R.drawable.ic_media_play);
         ic_pause = getResources().getDrawable(android.R.drawable.ic_media_pause);
@@ -176,12 +181,26 @@ public class ChessActivity extends AppCompatActivity {
         return true;
     }
 
+    private void setRipple(View v){
+        MaterialRippleLayout.on(v)
+                .rippleOverlay(true)
+                .rippleColor(Color.WHITE)
+                .rippleAlpha(0.1f)
+                .rippleHover(true)
+                .rippleDelayClick(true)
+                .rippleDuration(350)
+                .rippleFadeDuration(75)
+                .create();
+    }
+
+
     public void confirmReset(){
         if(gameStatus == STARTED)
             pauseGame();
 
         new MaterialDialog.Builder(this)
                 .title(R.string.util_advise_title)
+                .theme(Theme.DARK)
                 .content(R.string.util_confirm_reset_game)
                 .positiveText(R.string.ok)
                 .negativeText(R.string.cancel)
@@ -197,13 +216,14 @@ public class ChessActivity extends AppCompatActivity {
     public void showScore(){
         new MaterialDialog.Builder(this)
                 .title(R.string.util_result_title)
+                .theme(Theme.DARK)
                 .content(nameJogador1
                         + "\nJogadas: "
                         + movePlayer1
                         + "\nTempo: "
                         + chronometerPlayer1.getText()
                         + "\n\n"
-                        +nameJogador2
+                        + nameJogador2
                         + "\nJogadas: "
                         + movePlayer2
                         + "\nTempo: "
@@ -225,6 +245,7 @@ public class ChessActivity extends AppCompatActivity {
 
         MaterialDialog mdialog = new MaterialDialog.Builder(this)
                 .title(R.string.user_config_activity_name)
+                .theme(Theme.DARK)
                 .customView(R.layout.activity_user_config, true)
                 .positiveText(R.string.ok)
                 .negativeText(R.string.cancel)
@@ -287,8 +308,8 @@ public class ChessActivity extends AppCompatActivity {
         movePlayer2 = 0;
         playerMoving = PLAYER1;
 
-        layoutPlayer1.setEnabled(true);
-        layoutPlayer2.setEnabled(false);
+        cardPlayer1.setEnabled(true);
+        cardPlayer2.setEnabled(false);
 
 
         chronometerControl(START, chronometerPlayer1);
@@ -301,8 +322,8 @@ public class ChessActivity extends AppCompatActivity {
     private void pauseGame(){
         fab.setImageDrawable(ic_play);
 
-        layoutPlayer1.setEnabled(false);
-        layoutPlayer2.setEnabled(false);
+        cardPlayer1.setEnabled(false);
+        cardPlayer2.setEnabled(false);
 
         chronometerControl(STOP, chronometerPlayer1);
         chronometerControl(STOP, chronometerPlayer2);
@@ -315,11 +336,11 @@ public class ChessActivity extends AppCompatActivity {
 
         if(playerMoving == PLAYER1){
             chronometerControl(RESTART, chronometerPlayer1);
-            layoutPlayer1.setEnabled(true);
+            cardPlayer1.setEnabled(true);
         }
         else if (playerMoving == PLAYER2){
             chronometerControl(RESTART, chronometerPlayer2);
-            layoutPlayer2.setEnabled(true);
+            cardPlayer2.setEnabled(true);
 
         }
 
@@ -332,8 +353,8 @@ public class ChessActivity extends AppCompatActivity {
         chronometerControl(RESET, chronometerPlayer1);
         chronometerControl(RESET, chronometerPlayer2);
 
-        layoutPlayer1.setEnabled(false);
-        layoutPlayer2.setEnabled(false);
+        cardPlayer1.setEnabled(false);
+        cardPlayer2.setEnabled(false);
 
 
         movePlayer1 = 0;
@@ -352,8 +373,8 @@ public class ChessActivity extends AppCompatActivity {
 
             movePlayer1++;
 
-            layoutPlayer1.setEnabled(false);
-            layoutPlayer2.setEnabled(true);
+            cardPlayer1.setEnabled(false);
+            cardPlayer2.setEnabled(true);
 
             updateMoves();
         }
@@ -365,8 +386,8 @@ public class ChessActivity extends AppCompatActivity {
 
             movePlayer2++;
 
-            layoutPlayer1.setEnabled(true);
-            layoutPlayer2.setEnabled(false);
+            cardPlayer1.setEnabled(true);
+            cardPlayer2.setEnabled(false);
 
             updateMoves();
         }

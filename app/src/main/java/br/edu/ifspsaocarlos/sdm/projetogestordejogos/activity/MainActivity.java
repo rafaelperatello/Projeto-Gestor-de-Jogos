@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 .rippleFadeDuration(75)
                 .create();
     }
-    
+
     private void setNames(){
         SharedPreferences sharedpreferences = getSharedPreferences(Util.APP_SHARED_FILE, Context.MODE_PRIVATE);
         nameJogador1 = sharedpreferences.getString(Util.PLAYER1_NAME, null);
