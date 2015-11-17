@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
@@ -15,10 +16,10 @@ import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 import util.Util;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton bt_dice;
-    private ImageButton bt_roulette;
-    private ImageButton bt_chess;
-    private ImageButton bt_chronometer;
+    private CardView bt_dice;
+    private CardView bt_roulette;
+    private CardView bt_chess;
+    private CardView bt_chronometer;
 
     private String nameJogador1, nameJogador2;
 
@@ -29,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         setNames();
 
-        bt_dice = (ImageButton) findViewById(R.id.buttondice);
-        bt_roulette = (ImageButton) findViewById(R.id.buttonroulette);
-        bt_chess = (ImageButton) findViewById(R.id.buttonchess);
-        bt_chronometer = (ImageButton) findViewById(R.id.buttonchronometer);
+        bt_dice = (CardView) findViewById(R.id.card_view_dice);
+        bt_roulette = (CardView) findViewById(R.id.card_view_roulette);
+        bt_chess = (CardView) findViewById(R.id.card_view_chess);
+        bt_chronometer = (CardView) findViewById(R.id.card_view_chronometer);
 
         bt_dice.setOnClickListener(btDiceOnClickListener);
         bt_roulette.setOnClickListener(btRouletteOnClickListener);

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorBackground"
+    android:background="@color/ActivityColorBackground"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
     <LinearLayout
@@ -16,21 +16,47 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_dice"
             android:layout_weight="0.5"
-            android:tint="@android:color/white"
-            android:id="@+id/buttondice"
-            android:src="@drawable/dice"/>
+            card_view:cardBackgroundColor="@color/CardColorBackground"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            card_view:cardCornerRadius="4dp">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:padding="@dimen/card_content_padding"
+                android:tint="@color/colorAccent"
+                android:id="@+id/ImageViewDice"
+                android:src="@drawable/dice"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_roulette"
             android:layout_weight="0.5"
-            android:tint="@android:color/white"
-            android:id="@+id/buttonroulette"
-            android:src="@drawable/roulette"/>
+            card_view:cardBackgroundColor="@color/CardColorBackground"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            card_view:cardCornerRadius="4dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:padding="@dimen/card_content_padding"
+                android:tint="@color/colorAccent"
+                android:id="@+id/ImageViewRoulette"
+                android:src="@drawable/roulette"/>
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
     <LinearLayout
@@ -41,21 +67,47 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_chess"
             android:layout_weight="0.5"
-            android:tint="@android:color/white"
-            android:id="@+id/buttonchess"
-            android:src="@drawable/chess"/>
+            card_view:cardBackgroundColor="@color/CardColorBackground"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            card_view:cardCornerRadius="4dp">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:padding="@dimen/card_content_padding"
+                android:tint="@color/colorAccent"
+                android:id="@+id/ImageViewChess"
+                android:src="@drawable/chess"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_chronometer"
             android:layout_weight="0.5"
-            android:tint="@android:color/white"
-            android:id="@+id/buttonchronometer"
-            android:src="@drawable/chronometer"/>
+            card_view:cardBackgroundColor="@color/CardColorBackground"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            card_view:cardCornerRadius="4dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:padding="@dimen/card_content_padding"
+                android:tint="@color/colorAccent"
+                android:id="@+id/ImageViewChronometer"
+                android:src="@drawable/chronometer"/>
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 </LinearLayout>
