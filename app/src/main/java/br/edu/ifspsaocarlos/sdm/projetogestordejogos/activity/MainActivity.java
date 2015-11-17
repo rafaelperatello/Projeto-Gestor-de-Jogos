@@ -3,6 +3,7 @@ package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.balysv.materialripple.MaterialRippleLayout;
 
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 import util.Util;
@@ -35,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         bt_chess = (CardView) findViewById(R.id.card_view_chess);
         bt_chronometer = (CardView) findViewById(R.id.card_view_chronometer);
 
+        setRipple(bt_dice);
+        setRipple(bt_roulette);
+        setRipple(bt_chess);
+        setRipple(bt_chronometer);
+
         bt_dice.setOnClickListener(btDiceOnClickListener);
         bt_roulette.setOnClickListener(btRouletteOnClickListener);
         bt_chess.setOnClickListener(btChessOnClickListener);
@@ -43,6 +51,18 @@ public class MainActivity extends AppCompatActivity {
         setupWindowAnimations();
     }
 
+    private void setRipple(View v){
+        MaterialRippleLayout.on(v)
+                .rippleOverlay(true)
+                .rippleColor(Color.WHITE)
+                .rippleAlpha(0.1f)
+                .rippleHover(true)
+                .rippleDelayClick(true)
+                .rippleDuration(350)
+                .rippleFadeDuration(75)
+                .create();
+    }
+    
     private void setNames(){
         SharedPreferences sharedpreferences = getSharedPreferences(Util.APP_SHARED_FILE, Context.MODE_PRIVATE);
         nameJogador1 = sharedpreferences.getString(Util.PLAYER1_NAME, null);
