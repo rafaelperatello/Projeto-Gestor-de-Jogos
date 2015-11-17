@@ -23,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.DiceActivity"
             android:label="@string/dice_activity_name"
@@ -32,6 +33,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity.MainActivity" />
         </activity>
+
         <activity
             android:name=".activity.RouletteActivity"
             android:label="@string/roulette_activity_name"
@@ -41,6 +43,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity.MainActivity" />
         </activity>
+
         <activity
             android:name=".activity.ChessActivity"
             android:label="@string/chess_activity_name"
@@ -50,6 +53,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity.MainActivity" />
         </activity>
+
         <activity
             android:name=".activity.ChronometerActivity"
             android:label="@string/chronometer_activity_name"
