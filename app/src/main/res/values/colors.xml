@@ -17,4 +17,6 @@
 
     <color name="dice_color">#424242</color>
 
+    <color name="main_tint_color">#ffffff</color>
+
 </resources>

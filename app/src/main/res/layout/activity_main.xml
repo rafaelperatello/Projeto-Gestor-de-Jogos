@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:padding="@dimen/card_content_padding"
-                android:tint="@color/colorAccent"
+                android:tint="@color/main_tint_color"
                 android:id="@+id/ImageViewDice"
                 android:src="@drawable/dice"/>
 
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:padding="@dimen/card_content_padding"
-                android:tint="@color/colorAccent"
+                android:tint="@color/main_tint_color"
                 android:id="@+id/ImageViewRoulette"
                 android:src="@drawable/roulette"/>
 
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:padding="@dimen/card_content_padding"
-                android:tint="@color/colorAccent"
+                android:tint="@color/main_tint_color"
                 android:id="@+id/ImageViewChess"
                 android:src="@drawable/chess"/>
 
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:padding="@dimen/card_content_padding"
-                android:tint="@color/colorAccent"
+                android:tint="@color/main_tint_color"
                 android:id="@+id/ImageViewChronometer"
                 android:src="@drawable/chronometer"/>
 
