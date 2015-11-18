@@ -13,9 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import java.util.Random;
-
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.util.Util;
 
@@ -32,13 +30,13 @@ public class DiceActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        table = (LinearLayout )findViewById(R.id.linearLayoutTable);
-        dice_1 = (ImageView)findViewById(R.id.imageViewDice1);
-        dice_2 = (ImageView)findViewById(R.id.imageViewDice2);
-        dice_3 = (ImageView)findViewById(R.id.imageViewDice3);
-        dice_4 = (ImageView)findViewById(R.id.imageViewDice4);
+        table = (LinearLayout) findViewById(R.id.linearLayoutTable);
+        dice_1 = (ImageView) findViewById(R.id.imageViewDice1);
+        dice_2 = (ImageView) findViewById(R.id.imageViewDice2);
+        dice_3 = (ImageView) findViewById(R.id.imageViewDice3);
+        dice_4 = (ImageView) findViewById(R.id.imageViewDice4);
 
-        setFaces();
+        loadFaces();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +52,6 @@ public class DiceActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dice_activity_bar, menu);
-
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -73,14 +70,16 @@ public class DiceActivity extends AppCompatActivity {
         return true;
     }
 
-    private void sortDice(){
+    //Sorteia os dados
+    private void sortDice() {
         setAnimationOnDice(dice_1);
         setAnimationOnDice(dice_2);
         setAnimationOnDice(dice_3);
         setAnimationOnDice(dice_4);
     }
 
-    private void setAnimationOnDice(ImageView dice){
+    //Gera uma animação randomica para os dados
+    private void setAnimationOnDice(ImageView dice) {
         animation = new AnimationDrawable();
         animation.addFrame(getFace(sortNumber()), Util.ANIMDURATION);
         animation.addFrame(getFace(sortNumber()), Util.ANIMDURATION);
@@ -91,7 +90,8 @@ public class DiceActivity extends AppCompatActivity {
         animation.start();
     }
 
-    private Drawable getFace(int face){
+    //Retorna a face de acordo com o numero sorteado
+    private Drawable getFace(int face) {
         Drawable faceDrawable = face_1;
 
         switch (face) {
@@ -100,39 +100,41 @@ public class DiceActivity extends AppCompatActivity {
                 break;
 
             case 2:
-                faceDrawable =  face_2;
-            break;
+                faceDrawable = face_2;
+                break;
 
             case 3:
-                faceDrawable =  face_3;
-            break;
+                faceDrawable = face_3;
+                break;
 
             case 4:
-                faceDrawable =  face_4;
-            break;
+                faceDrawable = face_4;
+                break;
 
             case 5:
-                faceDrawable =  face_5;
-            break;
+                faceDrawable = face_5;
+                break;
 
             case 6:
-                faceDrawable =  face_6;
-            break;
+                faceDrawable = face_6;
+                break;
         }
 
         return faceDrawable;
     }
 
-    private int sortNumber(){
+    //Gerador de número randomico
+    private int sortNumber() {
         Random gerador = new Random();
-        int number = gerador.nextInt(6) +1;
+        int number = gerador.nextInt(6) + 1;
 
         Log.d(Util.DEGUB_NAME, "sorted number: " + number);
 
         return number;
     }
 
-    private void setFaces(){
+    //Carrega os drawables do dado
+    private void loadFaces() {
         face_1 = getResources().getDrawable(R.drawable.dice1);
         face_2 = getResources().getDrawable(R.drawable.dice2);
         face_3 = getResources().getDrawable(R.drawable.dice3);
