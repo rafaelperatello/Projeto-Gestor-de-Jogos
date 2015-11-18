@@ -1,5 +1,7 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,6 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.balysv.materialripple.MaterialRippleLayout;
+
 import java.util.Random;
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.util.Util;
@@ -35,6 +40,16 @@ public class DiceActivity extends AppCompatActivity {
         dice_2 = (ImageView) findViewById(R.id.imageViewDice2);
         dice_3 = (ImageView) findViewById(R.id.imageViewDice3);
         dice_4 = (ImageView) findViewById(R.id.imageViewDice4);
+
+        dice_1.setOnClickListener(dice1OnClickListener);
+        dice_2.setOnClickListener(dice2OnClickListener);
+        dice_3.setOnClickListener(dice3OnClickListener);
+        dice_4.setOnClickListener(dice4OnClickListener);
+
+        setRipple(dice_1);
+        setRipple(dice_2);
+        setRipple(dice_3);
+        setRipple(dice_4);
 
         loadFaces();
 
@@ -68,6 +83,20 @@ public class DiceActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    //Efeito de clique nos dados
+    private void setRipple(View v){
+        MaterialRippleLayout.on(v)
+                .rippleOverlay(true)
+                .rippleColor(Color.WHITE)
+                .rippleAlpha(0.1f)
+                .rippleRoundedCorners(5)
+                .rippleHover(true)
+                .rippleDelayClick(true)
+                .rippleDuration(350)
+                .rippleFadeDuration(75)
+                .create();
     }
 
     //Sorteia os dados
@@ -143,4 +172,33 @@ public class DiceActivity extends AppCompatActivity {
         face_6 = getResources().getDrawable(R.drawable.dice6);
     }
 
+
+    //Listeners dos dados
+    private View.OnClickListener dice1OnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setAnimationOnDice(dice_1);
+        }
+    };
+
+    private View.OnClickListener dice2OnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setAnimationOnDice(dice_2);
+        }
+    };
+
+    private View.OnClickListener dice3OnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setAnimationOnDice(dice_3);
+        }
+    };
+
+    private View.OnClickListener dice4OnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setAnimationOnDice(dice_4);
+        }
+    };
 }
