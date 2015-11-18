@@ -6,9 +6,9 @@
         android:title="@string/action_reset"
         app:showAsAction="always" />
 
-    <item android:id="@+id/action_setting"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/action_settings"
-        app:showAsAction="always" />
+    <!--<item android:id="@+id/action_setting"-->
+        <!--android:icon="@drawable/ic_settings"-->
+        <!--android:title="@string/action_settings"-->
+        <!--app:showAsAction="always" />-->
 
 </menu>
