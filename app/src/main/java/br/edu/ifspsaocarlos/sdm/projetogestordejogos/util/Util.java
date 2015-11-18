@@ -2,8 +2,12 @@ package br.edu.ifspsaocarlos.sdm.projetogestordejogos.util;
 
 public class Util {
     public static final String DEGUB_NAME = "Gestor Jogos";
+
     public static final String PLAYER1_NAME = "P1N";
     public static final String PLAYER2_NAME = "P2N";
+
+    public static final String ROULETTE_QUANTITY = "RQTD";
+    public static final String ROULETTE_SHOW_CARD = "ROSC";
 
     public static final String APP_SHARED_FILE = "secret_file";
 

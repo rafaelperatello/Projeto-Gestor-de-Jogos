@@ -19,11 +19,13 @@ import br.edu.ifspsaocarlos.sdm.projetogestordejogos.model.Roulette;
 public class RouletteAdapter extends BaseAdapter implements View.OnClickListener {
     private Activity activity;
     private ArrayList<Roulette> values;
+    private boolean showColorInCard = false;
     private static LayoutInflater inflater = null;
 
-    public RouletteAdapter(Activity activity, ArrayList<Roulette> values){
+    public RouletteAdapter(Activity activity, ArrayList<Roulette> values, boolean showColorInCard){
         this.activity = activity;
         this.values = values;
+        this.showColorInCard = showColorInCard;
 
         inflater = ( LayoutInflater )this.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -61,10 +63,12 @@ public class RouletteAdapter extends BaseAdapter implements View.OnClickListener
         holder.textValue.setText("" + valor.getNumber());
         holder.imageIcon.setImageResource(valor.getImage());
 
-        //Setar cor no icone
-        holder.imageIcon.setColorFilter(Color.rgb(Color.red(valor.getBackgroundColor()), Color.green(valor.getBackgroundColor()), Color.blue(valor.getBackgroundColor())));
-
-//        holder.card.setCardBackgroundColor(valor.getBackgroundColor());
+        if(showColorInCard) {
+            holder.card.setCardBackgroundColor(valor.getBackgroundColor());
+        }
+        else {
+            holder.imageIcon.setColorFilter(Color.rgb(Color.red(valor.getBackgroundColor()), Color.green(valor.getBackgroundColor()), Color.blue(valor.getBackgroundColor())));
+        }
 
         holder.imageSortedIcon.setImageResource(valor.getImageSelected());
 
