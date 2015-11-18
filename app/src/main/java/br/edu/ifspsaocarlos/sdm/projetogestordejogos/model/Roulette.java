@@ -1,17 +1,11 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.model;
 
-import android.graphics.drawable.Drawable;
-
-/**
- * Created by rafae on 17/11/2015.
- */
 public class Roulette {
     private int number;
     private int backgroundColor;
     private int image;
 
     public Roulette(){
-
     }
 
     public Roulette(int number, int backgroundColor, int image){
