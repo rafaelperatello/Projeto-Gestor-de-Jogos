@@ -64,7 +64,6 @@ public class RouletteAdapter extends BaseAdapter implements View.OnClickListener
         //Setar cor no icone
         holder.imageIcon.setColorFilter(Color.rgb(Color.red(valor.getBackgroundColor()), Color.green(valor.getBackgroundColor()), Color.blue(valor.getBackgroundColor())));
 
-        //Setar cor no card
 //        holder.card.setCardBackgroundColor(valor.getBackgroundColor());
 
         holder.imageSortedIcon.setImageResource(valor.getImageSelected());
