@@ -15,4 +15,6 @@
     <color name="roulette_black">#000</color>
     <color name="roulette_red">#f44336</color>
 
+    <color name="dice_color">#f44336</color>
+
 </resources>

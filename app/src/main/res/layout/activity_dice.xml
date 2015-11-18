@@ -51,21 +51,47 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/card_content_padding"
-                    android:src="@drawable/dice1"
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_weight="0.5"
-                    android:id="@+id/imageViewDice1" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    card_view:cardBackgroundColor="@color/dice_color"
+                    card_view:cardUseCompatPadding="true"
+                    android:id="@+id/cardDice1"
+                    card_view:contentPadding="@dimen/card_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="4dp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/card_content_padding"
-                    android:src="@drawable/dice1"
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/card_content_padding"
+                        android:src="@drawable/dice1"
+                        android:id="@+id/imageViewDice1" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_weight="0.5"
-                    android:id="@+id/imageViewDice2" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    card_view:cardBackgroundColor="@color/dice_color"
+                    card_view:cardUseCompatPadding="true"
+                    android:id="@+id/cardDice2"
+                    card_view:contentPadding="@dimen/card_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/card_content_padding"
+                        android:src="@drawable/dice1"
+                        android:id="@+id/imageViewDice2" />
+
+                </android.support.v7.widget.CardView>
             </LinearLayout>
 
             <LinearLayout
@@ -76,21 +102,47 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/card_content_padding"
-                    android:src="@drawable/dice1"
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_weight="0.5"
-                    android:id="@+id/imageViewDice3" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    card_view:cardBackgroundColor="@color/dice_color"
+                    card_view:cardUseCompatPadding="true"
+                    android:id="@+id/cardDice3"
+                    card_view:contentPadding="@dimen/card_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="4dp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/card_content_padding"
-                    android:src="@drawable/dice1"
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/card_content_padding"
+                        android:src="@drawable/dice1"
+                        android:id="@+id/imageViewDice3" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_weight="0.5"
-                    android:id="@+id/imageViewDice4" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    card_view:cardBackgroundColor="@color/dice_color"
+                    card_view:cardUseCompatPadding="true"
+                    android:id="@+id/cardDice4"
+                    card_view:contentPadding="@dimen/card_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="4dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/card_content_padding"
+                        android:src="@drawable/dice1"
+                        android:id="@+id/imageViewDice4" />
+
+                </android.support.v7.widget.CardView>
             </LinearLayout>
 
         </LinearLayout>
