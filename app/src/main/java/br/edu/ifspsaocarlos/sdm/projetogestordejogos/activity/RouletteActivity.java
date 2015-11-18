@@ -88,7 +88,8 @@ public class RouletteActivity extends AppCompatActivity {
         return true;
     }
 
-    private void configSettings(){
+    //Configura as preferencias do usuario
+    private void configSettings() {
         MaterialDialog mdialog = new MaterialDialog.Builder(this)
                 .title(R.string.user_config_activity_name)
                 .theme(Theme.DARK)
@@ -132,10 +133,11 @@ public class RouletteActivity extends AppCompatActivity {
         editQuantity.setText("" + numbersQuantity);
         checkCard.setChecked(showColorInCard);
 
-    mdialog.show();
+        mdialog.show();
     }
 
-    private void saveSettings(int value, boolean card){
+    //Salva as preferencias
+    private void saveSettings(int value, boolean card) {
         Log.d(Util.DEGUB_NAME, "valor: " + value + " showCard: " + card);
 
         SharedPreferences sharedpreferences = getSharedPreferences(Util.APP_SHARED_FILE, Context.MODE_PRIVATE);
@@ -148,7 +150,8 @@ public class RouletteActivity extends AppCompatActivity {
         loadTable();
     }
 
-    private void loadTable(){
+    //Gera a mesa com base nos dados de preferencia
+    private void loadTable() {
         SharedPreferences sharedpreferences = getSharedPreferences(Util.APP_SHARED_FILE, Context.MODE_PRIVATE);
 
         numbersQuantity = sharedpreferences.getInt(Util.ROULETTE_QUANTITY, -1);
@@ -169,12 +172,11 @@ public class RouletteActivity extends AppCompatActivity {
         list.setAdapter(rouletteAdapter);
     }
 
-
-
-    private void sort(){
+    //Sorteia um numero da roleta e faz o scroll até ele
+    private void sort() {
         int sorted = sortNumber();
 
-        if(lastSorted != -1){
+        if (lastSorted != -1) {
             roulette.get(lastSorted).setImageSelected(0);
         }
         lastSorted = sorted;
@@ -185,26 +187,25 @@ public class RouletteActivity extends AppCompatActivity {
         list.smoothScrollToPositionFromTop(sorted, 0, Util.ANIMDURATION);
     }
 
-    private ArrayList<Roulette> fillRoulette(int size){
+    //Preenche a roleta
+    private ArrayList<Roulette> fillRoulette(int size) {
         ArrayList<Roulette> numbers = new ArrayList<>();
 
         boolean toggleBackgroung = false;
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             int color;
             int value = valuesBuffer.get(i);
 
-            if (value != 0){
-                if (toggleBackgroung){
+            if (value != 0) {
+                if (toggleBackgroung) {
                     color = ContextCompat.getColor(this, R.color.roulette_red);
                     toggleBackgroung = false;
-                }
-                else {
+                } else {
                     color = ContextCompat.getColor(this, R.color.roulette_black);
                     toggleBackgroung = true;
                 }
-            }
-            else{
+            } else {
                 color = ContextCompat.getColor(this, R.color.roulette_green);
             }
 
@@ -213,8 +214,8 @@ public class RouletteActivity extends AppCompatActivity {
         return numbers;
     }
 
-
-    private ArrayList<Integer> fillValuesBuffer(int size){
+    //Preenche o buffer de numeros de forma aleatoria
+    private ArrayList<Integer> fillValuesBuffer(int size) {
         ArrayList<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < size) {
@@ -226,7 +227,8 @@ public class RouletteActivity extends AppCompatActivity {
         return numbers;
     }
 
-    private int sortNumber(){
+    //Gerador de numero aleatorio
+    private int sortNumber() {
         Random gerador = new Random();
         int number = gerador.nextInt(numbersQuantity);
 
