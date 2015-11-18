@@ -12,11 +12,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.R;
+import br.edu.ifspsaocarlos.sdm.projetogestordejogos.adapter.RouletteAdapter;
+import br.edu.ifspsaocarlos.sdm.projetogestordejogos.model.Roulette;
 
 public class RouletteActivity extends AppCompatActivity {
+    private ArrayList<Roulette> values;
+    private ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +31,12 @@ public class RouletteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_roulette);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        list = (ListView) findViewById(R.id.listViewRoullete);
+
+        values = new ArrayList<>();
+        setValues();
+        list.setAdapter(new RouletteAdapter(this, values));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,13 +58,6 @@ public class RouletteActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void setMenuColor(Drawable d){
-        if (d != null) {
-            d.mutate();
-            d.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-        }
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -67,5 +73,18 @@ public class RouletteActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private void setMenuColor(Drawable d){
+        if (d != null) {
+            d.mutate();
+            d.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+        }
+    }
+
+    private void setValues(){
+        for (int i = 0; i < 100; i++){
+            values.add(new Roulette(i, 0, R.drawable.roulette));
+        }
     }
 }
