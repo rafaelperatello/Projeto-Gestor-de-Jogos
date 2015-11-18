@@ -4,6 +4,7 @@ public class Roulette {
     private int number;
     private int backgroundColor;
     private int image;
+    private int imageSelected;
 
     public Roulette(){
     }
@@ -36,5 +37,13 @@ public class Roulette {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public int getImageSelected() {
+        return imageSelected;
+    }
+
+    public void setImageSelected(int imageSelected) {
+        this.imageSelected = imageSelected;
     }
 }

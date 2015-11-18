@@ -22,11 +22,12 @@ import br.edu.ifspsaocarlos.sdm.projetogestordejogos.model.Roulette;
 import br.edu.ifspsaocarlos.sdm.projetogestordejogos.util.Util;
 
 public class RouletteActivity extends AppCompatActivity {
-    private ArrayList<Roulette> values;
-    private ArrayList<Integer> valueBuffer;
-
+    private ArrayList<Roulette> roulette;
+    private ArrayList<Integer> valuesBuffer;
+    private RouletteAdapter rouletteAdapter;
     private ListView list;
     private final int numbersQuantity = 100;
+    private int lastSorted = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +41,18 @@ public class RouletteActivity extends AppCompatActivity {
         list.setDividerHeight(0);
         list.setPadding(0, 0, 0, 0);
 
-        valueBuffer = fillValueBuffer(numbersQuantity);
-        values = fillValues(numbersQuantity);
+        valuesBuffer = fillValuesBuffer(numbersQuantity);
+        roulette = fillRoulette(numbersQuantity);
 
-        list.setAdapter(new RouletteAdapter(this, values));
+        rouletteAdapter = new RouletteAdapter(this, roulette);
+
+        list.setAdapter(rouletteAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                list.smoothScrollToPositionFromTop(sortNumber(), 0, Util.ANIMDURATION);
+                sort();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,15 +83,28 @@ public class RouletteActivity extends AppCompatActivity {
         return true;
     }
 
+    private void sort(){
+        int sorted = sortNumber();
 
-    private ArrayList<Roulette> fillValues(int size){
+        if(lastSorted != -1){
+            roulette.get(lastSorted).setImageSelected(0);
+        }
+        lastSorted = sorted;
+
+        roulette.get(sorted).setImageSelected(R.drawable.ic_label);
+        rouletteAdapter.notifyDataSetChanged();
+
+        list.smoothScrollToPositionFromTop(sorted, 0, Util.ANIMDURATION);
+    }
+
+    private ArrayList<Roulette> fillRoulette(int size){
         ArrayList<Roulette> numbers = new ArrayList<>();
 
         boolean toggleBackgroung = false;
 
         for (int i = 0; i < size; i++){
             int color;
-            int value = valueBuffer.get(i);
+            int value = valuesBuffer.get(i);
 
             if (value != 0){
                 if (toggleBackgroung){
@@ -110,7 +126,7 @@ public class RouletteActivity extends AppCompatActivity {
     }
 
 
-    private ArrayList<Integer> fillValueBuffer(int size){
+    private ArrayList<Integer> fillValuesBuffer(int size){
         ArrayList<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < size) {

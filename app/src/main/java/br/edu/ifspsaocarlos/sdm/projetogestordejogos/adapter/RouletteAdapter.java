@@ -53,12 +53,14 @@ public class RouletteAdapter extends BaseAdapter implements View.OnClickListener
         holder.textValue = (TextView)row.findViewById(R.id.textViewRow);
         holder.imageIcon = (ImageView)row.findViewById(R.id.ImageViewRow);
         holder.card = (CardView)row.findViewById(R.id.cardViewRow);
+        holder.imageSortedIcon = (ImageView)row.findViewById(R.id.ImageViewRowSorted);
 
         Roulette valor = values.get(position);
 
         holder.textValue.setText("" + valor.getNumber());
         holder.imageIcon.setImageResource(valor.getImage());
         holder.card.setCardBackgroundColor(valor.getBackgroundColor());
+        holder.imageSortedIcon.setImageResource(valor.getImageSelected());
 
         return row;
     }
@@ -72,6 +74,7 @@ public class RouletteAdapter extends BaseAdapter implements View.OnClickListener
     {
         CardView card;
         ImageView imageIcon;
+        ImageView imageSortedIcon;
         TextView textValue;
     }
 }
