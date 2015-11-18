@@ -53,7 +53,7 @@ public class RouletteActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                list.smoothScrollToPositionFromTop(sortNumber(), 0, Util.ANIMDURATION);
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
