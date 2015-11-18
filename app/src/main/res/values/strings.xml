@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Projeto Gestor de Jogos</string>
+    <string name="app_name">Ferramentas do Jogador</string>
 
-    <string name="main_activity_name">Gestor de Jogos</string>
+    <string name="main_activity_name">Ferramentas do Jogador</string>
     <string name="dice_activity_name">Dados</string>
     <string name="roulette_activity_name">Roleta</string>
     <string name="chess_activity_name">Xadrez</string>
