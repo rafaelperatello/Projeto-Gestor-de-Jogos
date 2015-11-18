@@ -12,7 +12,7 @@
 
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view_dice"
+            android:id="@+id/cardViewRow"
             card_view:cardBackgroundColor="@color/CardColorBackground"
             card_view:cardUseCompatPadding="true"
             card_view:contentPadding="@dimen/card_padding"
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0"
-                    android:id="@+id/textViewRowValue" />
+                    android:id="@+id/textViewRow" />
             </LinearLayout>
 
 

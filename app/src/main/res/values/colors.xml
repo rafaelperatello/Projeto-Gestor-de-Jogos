@@ -11,4 +11,8 @@
     <color name="ActivityColorBackground">#303030</color>
     <color name="CardColorBackground">#424242</color>
 
+    <color name="roulette_green">#8bc34a</color>
+    <color name="roulette_black">#000</color>
+    <color name="roulette_red">#f44336</color>
+
 </resources>

@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -84,7 +85,7 @@ public class RouletteActivity extends AppCompatActivity {
 
     private void setValues(){
         for (int i = 0; i < 100; i++){
-            values.add(new Roulette(i, 0, R.drawable.roulette));
+            values.add(new Roulette(i, ContextCompat.getColor(this, R.color.roulette_red), R.drawable.roulette));
         }
     }
 }
