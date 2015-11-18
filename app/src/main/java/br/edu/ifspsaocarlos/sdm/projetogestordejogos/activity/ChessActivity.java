@@ -74,35 +74,33 @@ public class ChessActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         //Nome do jogador 1
-        if (intent.hasExtra(Util.PLAYER1_NAME)){
+        if (intent.hasExtra(Util.PLAYER1_NAME)) {
             nameJogador1 = intent.getStringExtra(Util.PLAYER1_NAME);
-        }
-        else{
+        } else {
             nameJogador1 = "Jogador 1";
         }
 
         //Nome do jogador 2
-        if (intent.hasExtra(Util.PLAYER2_NAME)){
+        if (intent.hasExtra(Util.PLAYER2_NAME)) {
             nameJogador2 = intent.getStringExtra(Util.PLAYER2_NAME);
-        }
-        else{
+        } else {
             nameJogador2 = "Jogador 2";
         }
 
 
-        textNamePlayer1 = (TextView)findViewById(R.id.textViewPlayer1);
-        textNamePlayer2 = (TextView)findViewById(R.id.textViewPlayer2);
+        textNamePlayer1 = (TextView) findViewById(R.id.textViewPlayer1);
+        textNamePlayer2 = (TextView) findViewById(R.id.textViewPlayer2);
 
         updatePlayersNames();
 
-        textMovesPlayer1 = (TextView)findViewById(R.id.textViewMovesPlayer1);
-        textMovesPlayer2 = (TextView)findViewById(R.id.textViewMovesPlayer2);
+        textMovesPlayer1 = (TextView) findViewById(R.id.textViewMovesPlayer1);
+        textMovesPlayer2 = (TextView) findViewById(R.id.textViewMovesPlayer2);
 
         chronometerPlayer1 = (Chronometer) findViewById(R.id.chronometerPlayer1);
         chronometerPlayer2 = (Chronometer) findViewById(R.id.chronometerPlayer2);
 
-        cardPlayer1 = (CardView )findViewById(R.id.card_view_player1);
-        cardPlayer2 = (CardView )findViewById(R.id.card_view_player2);
+        cardPlayer1 = (CardView) findViewById(R.id.card_view_player1);
+        cardPlayer2 = (CardView) findViewById(R.id.card_view_player2);
 
         cardPlayer1.setOnClickListener(layoutPlayer1ClickListener);
         cardPlayer2.setOnClickListener(layoutPlayer2ClickListener);
@@ -170,7 +168,8 @@ public class ChessActivity extends AppCompatActivity {
         return true;
     }
 
-    private void setRipple(View v){
+    //Efeito de clique nos botôes
+    private void setRipple(View v) {
         MaterialRippleLayout.on(v)
                 .rippleOverlay(true)
                 .rippleColor(Color.WHITE)
@@ -183,9 +182,9 @@ public class ChessActivity extends AppCompatActivity {
                 .create();
     }
 
-
-    public void confirmReset(){
-        if(gameStatus == STARTED)
+    //Dialogo de confirmação de reset do jogo
+    public void confirmReset() {
+        if (gameStatus == STARTED)
             pauseGame();
 
         new MaterialDialog.Builder(this)
@@ -203,7 +202,8 @@ public class ChessActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void showScore(){
+    //Dialogo de exibição de resultado
+    public void showScore() {
         new MaterialDialog.Builder(this)
                 .title(R.string.util_result_title)
                 .theme(Theme.DARK)
@@ -228,9 +228,9 @@ public class ChessActivity extends AppCompatActivity {
                 .show();
     }
 
-
-    private void configUser(){
-        if(gameStatus == STARTED)
+    //Configura os usuários
+    private void configUser() {
+        if (gameStatus == STARTED)
             pauseGame();
 
         MaterialDialog mdialog = new MaterialDialog.Builder(this)
@@ -274,7 +274,8 @@ public class ChessActivity extends AppCompatActivity {
         mdialog.show();
     }
 
-    private void saveNames(String name1, String name2){
+    //Salva os nomes
+    private void saveNames(String name1, String name2) {
         nameJogador1 = name1;
         nameJogador2 = name2;
 
@@ -290,8 +291,8 @@ public class ChessActivity extends AppCompatActivity {
         updatePlayersNames();
     }
 
-
-    private void startGame(){
+    //Inicia o jogo
+    private void startGame() {
         fab.setImageDrawable(ic_pause);
 
         movePlayer1 = 0;
@@ -301,7 +302,6 @@ public class ChessActivity extends AppCompatActivity {
         cardPlayer1.setEnabled(true);
         cardPlayer2.setEnabled(false);
 
-
         chronometerControl(START, chronometerPlayer1);
         chronometerControl(START, chronometerPlayer2);
         chronometerControl(STOP, chronometerPlayer2);
@@ -309,7 +309,8 @@ public class ChessActivity extends AppCompatActivity {
         gameStatus = STARTED;
     }
 
-    private void pauseGame(){
+    //Pausa o jogo
+    private void pauseGame() {
         fab.setImageDrawable(ic_play);
 
         cardPlayer1.setEnabled(false);
@@ -321,14 +322,14 @@ public class ChessActivity extends AppCompatActivity {
         gameStatus = PAUSED;
     }
 
-    private void restartGame(){
+    //Reinicia o jogo
+    private void restartGame() {
         fab.setImageDrawable(ic_pause);
 
-        if(playerMoving == PLAYER1){
+        if (playerMoving == PLAYER1) {
             chronometerControl(RESTART, chronometerPlayer1);
             cardPlayer1.setEnabled(true);
-        }
-        else if (playerMoving == PLAYER2){
+        } else if (playerMoving == PLAYER2) {
             chronometerControl(RESTART, chronometerPlayer2);
             cardPlayer2.setEnabled(true);
 
@@ -337,7 +338,8 @@ public class ChessActivity extends AppCompatActivity {
         gameStatus = STARTED;
     }
 
-    private void resetGame(){
+    //Reseta o jogo
+    private void resetGame() {
         fab.setImageDrawable(ic_play);
 
         chronometerControl(RESET, chronometerPlayer1);
@@ -354,8 +356,9 @@ public class ChessActivity extends AppCompatActivity {
         gameStatus = STOPED;
     }
 
-    private void switchPlayer(){
-        if(playerMoving == PLAYER1){
+    //Faz o toggle dos jogadores
+    private void switchPlayer() {
+        if (playerMoving == PLAYER1) {
             playerMoving = PLAYER2;
 
             chronometerControl(STOP, chronometerPlayer1);
@@ -367,8 +370,7 @@ public class ChessActivity extends AppCompatActivity {
             cardPlayer2.setEnabled(true);
 
             updateMoves();
-        }
-        else if (playerMoving == PLAYER2){
+        } else if (playerMoving == PLAYER2) {
             playerMoving = PLAYER1;
 
             chronometerControl(STOP, chronometerPlayer2);
@@ -380,27 +382,29 @@ public class ChessActivity extends AppCompatActivity {
             cardPlayer2.setEnabled(false);
 
             updateMoves();
-        }
-        else{
+        } else {
             Log.d(Util.DEGUB_NAME, "Erro ao processar jogador atual");
         }
 
     }
 
-    private void updateMoves(){
+    //Atualiza o contador de movimentos
+    private void updateMoves() {
         textMovesPlayer1.setText("" + movePlayer1);
         textMovesPlayer2.setText("" + movePlayer2);
     }
 
-    private void updatePlayersNames(){
+    //Atualiza os nomes dos jogadores
+    private void updatePlayersNames() {
         textNamePlayer1.setText(nameJogador1);
         textNamePlayer2.setText(nameJogador2);
     }
 
-    private void chronometerControl(int status, Chronometer chronometer){
+    //Controlador dos cronometros
+    private void chronometerControl(int status, Chronometer chronometer) {
         Log.d(Util.DEGUB_NAME, "System: " + SystemClock.elapsedRealtime() + " Chronometer base: " + chronometer.getBase());
 
-        switch (status){
+        switch (status) {
             case START:
                 //Inicia o cronometro com a base de tempo sendo a mesma do sistema
                 chronometer.setBase(SystemClock.elapsedRealtime());
@@ -426,8 +430,7 @@ public class ChessActivity extends AppCompatActivity {
                 String array[] = chronoText.split(":");
                 if (array.length == 2) {
                     stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 1000 + Integer.parseInt(array[1]) * 1000;
-                }
-                else if (array.length == 3) {
+                } else if (array.length == 3) {
                     stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 60 * 1000 + Integer.parseInt(array[1]) * 60 * 1000 + Integer.parseInt(array[2]) * 1000;
                 }
 
@@ -449,6 +452,7 @@ public class ChessActivity extends AppCompatActivity {
         }
     }
 
+    //Listener dos botoes
     private View.OnClickListener layoutPlayer1ClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
