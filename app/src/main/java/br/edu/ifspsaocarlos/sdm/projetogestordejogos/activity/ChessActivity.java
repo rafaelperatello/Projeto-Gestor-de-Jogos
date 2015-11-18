@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -146,17 +145,7 @@ public class ChessActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.chess_activity_bar, menu);
 
-        setMenuColor(menu.findItem(R.id.action_reset).getIcon());
-        setMenuColor(menu.findItem(R.id.action_setting).getIcon());
-
         return super.onCreateOptionsMenu(menu);
-    }
-
-    private void setMenuColor(Drawable d){
-        if (d != null) {
-            d.mutate();
-            d.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-        }
     }
 
     @Override

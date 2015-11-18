@@ -1,7 +1,5 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -15,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Chronometer;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -83,16 +80,7 @@ public class ChronometerActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.chronometer_activity_bar, menu);
 
-        setMenuColor(menu.findItem(R.id.action_reset).getIcon());
-
         return super.onCreateOptionsMenu(menu);
-    }
-
-    private void setMenuColor(Drawable d){
-        if (d != null) {
-            d.mutate();
-            d.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-        }
     }
 
     @Override

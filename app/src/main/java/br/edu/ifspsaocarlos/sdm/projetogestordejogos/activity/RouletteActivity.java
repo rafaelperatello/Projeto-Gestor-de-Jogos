@@ -1,11 +1,7 @@
 package br.edu.ifspsaocarlos.sdm.projetogestordejogos.activity;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -64,8 +60,6 @@ public class RouletteActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.roulette_activity_bar, menu);
 
-        setMenuColor(menu.findItem(R.id.action_setting).getIcon());
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -86,12 +80,6 @@ public class RouletteActivity extends AppCompatActivity {
         return true;
     }
 
-    private void setMenuColor(Drawable d){
-        if (d != null) {
-            d.mutate();
-            d.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-        }
-    }
 
     private ArrayList<Roulette> fillValues(int size){
         ArrayList<Roulette> numbers = new ArrayList<>();
