@@ -127,10 +127,10 @@ public class RouletteActivity extends AppCompatActivity {
         RelativeLayout text = (RelativeLayout) mdialog.getCustomView();
 
         EditText editQuantity = (EditText) text.getChildAt(0);
-        CheckBox checkCard = (CheckBox) text.getChildAt(1);
+        CheckBox checkCard = (CheckBox) text.findViewById(R.id.checkBoxShowCard);
 
         editQuantity.setText("" + numbersQuantity);
-        checkCard.setSelected(showColorInCard);
+        checkCard.setChecked(showColorInCard);
 
     mdialog.show();
     }
