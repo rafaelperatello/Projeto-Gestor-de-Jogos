@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
 
@@ -47,9 +45,24 @@ public class MainActivity extends AppCompatActivity {
         bt_chess.setOnClickListener(btChessOnClickListener);
         bt_chronometer.setOnClickListener(btChronometerOnClickListener);
 
-        setupWindowAnimations();
     }
 
+    //Carrega os nomes novos caso seja setado em outra activity
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Util.CHESS) {
+            if (resultCode == Util.CHESS_RESULT_NEW_NAME) {
+                Log.d(Util.DEGUB_NAME, "novo nome setado");
+
+                setNames();
+            }
+            else if (resultCode == Util.CHESS_RESULT_NO_NEW_NAME) {
+                Log.d(Util.DEGUB_NAME, "nome é o mesmo");
+            }
+        }
+    }
+
+    //Efeito de clique nos botôes
     private void setRipple(View v){
         MaterialRippleLayout.on(v)
                 .rippleOverlay(true)
@@ -63,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 .create();
     }
 
+
+    //Carregar nome dos jogadores
     private void setNames(){
         SharedPreferences sharedpreferences = getSharedPreferences(Util.APP_SHARED_FILE, Context.MODE_PRIVATE);
         nameJogador1 = sharedpreferences.getString(Util.PLAYER1_NAME, null);
@@ -76,14 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setupWindowAnimations() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Slide slide = new Slide();
-            slide.setDuration(1000);
-            getWindow().setExitTransition(slide);
-        }
-    }
-
+    //Listeners dos botôes
     private View.OnClickListener btDiceOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -120,17 +128,5 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Util.CHESS) {
-            if (resultCode == Util.CHESS_RESULT_NEW_NAME) {
-                Log.d(Util.DEGUB_NAME, "novo nome setado");
 
-                setNames();
-            }
-            else if (resultCode == Util.CHESS_RESULT_NO_NEW_NAME) {
-                Log.d(Util.DEGUB_NAME, "nome é o mesmo");
-            }
-        }
-    }
 }
