@@ -101,8 +101,9 @@ public class ChronometerActivity extends AppCompatActivity {
         return true;
     }
 
-    public void confirmReset(){
-        if(chonometerStatus == STARTED)
+    //Dialogo de confirmação de reset do jogo
+    public void confirmReset() {
+        if (chonometerStatus == STARTED)
             chronometerControl(STOP);
 
         new MaterialDialog.Builder(this)
@@ -121,10 +122,10 @@ public class ChronometerActivity extends AppCompatActivity {
     }
 
     //Controlador do cronometro
-    private void chronometerControl(int status){
+    private void chronometerControl(int status) {
         Log.d(Util.DEGUB_NAME, "System: " + SystemClock.elapsedRealtime() + " Chronometer base: " + chronometer.getBase());
 
-        switch (status){
+        switch (status) {
             case START:
                 //Inicia o cronometro com a base de tempo sendo a mesma do sistema
                 chronometer.setBase(SystemClock.elapsedRealtime());
@@ -156,8 +157,7 @@ public class ChronometerActivity extends AppCompatActivity {
                 String array[] = chronoText.split(":");
                 if (array.length == 2) {
                     stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 1000 + Integer.parseInt(array[1]) * 1000;
-                }
-                else if (array.length == 3) {
+                } else if (array.length == 3) {
                     stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 60 * 1000 + Integer.parseInt(array[1]) * 60 * 1000 + Integer.parseInt(array[2]) * 1000;
                 }
 
