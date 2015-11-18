@@ -37,7 +37,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:tint="@color/colorAccent"
+                    android:tint="@color/roulette_icon_color"
                     android:id="@+id/ImageViewRow"
                     android:src="@drawable/roulette"/>
 

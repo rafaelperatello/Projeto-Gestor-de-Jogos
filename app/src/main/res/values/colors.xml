@@ -14,6 +14,7 @@
     <color name="roulette_green">#8bc34a</color>
     <color name="roulette_black">#000</color>
     <color name="roulette_red">#f44336</color>
+    <color name="roulette_icon_color">#ffffff</color>
 
     <color name="dice_color">#424242</color>
 

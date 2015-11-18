@@ -2,6 +2,7 @@ package br.edu.ifspsaocarlos.sdm.projetogestordejogos.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +60,13 @@ public class RouletteAdapter extends BaseAdapter implements View.OnClickListener
 
         holder.textValue.setText("" + valor.getNumber());
         holder.imageIcon.setImageResource(valor.getImage());
-        holder.card.setCardBackgroundColor(valor.getBackgroundColor());
+
+        //Setar cor no icone
+        holder.imageIcon.setColorFilter(Color.rgb(Color.red(valor.getBackgroundColor()), Color.green(valor.getBackgroundColor()), Color.blue(valor.getBackgroundColor())));
+
+        //Setar cor no card
+//        holder.card.setCardBackgroundColor(valor.getBackgroundColor());
+
         holder.imageSortedIcon.setImageResource(valor.getImageSelected());
 
         return row;
